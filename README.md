@@ -13,6 +13,7 @@ An immersive environmental sound app to promote sustainability and raise awarene
 
 Plan - 
   Due December 22nd.
+  Try Add more audio files and add ways to choose between different ones (JSON/Indexing)
   
   
 
