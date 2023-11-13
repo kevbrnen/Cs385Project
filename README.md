@@ -14,16 +14,17 @@ An immersive environmental sound app to promote sustainability and raise awarene
 Plan - 
   Due December 22nd.
   
+  
 
 Categories of recordings:
-	• Forest
-	• City 
-	• Ocean
-	• Jungle
-	• Snow
+* Forest
+* City
+* Ocean
+* Jungle
+* Snow
  one or two of each if local otherwise more
 
 Weather Conditions:
-	• Rainy
-	• Windy
-	• Calm
+* Rainy
+* Windy
+* Calm
