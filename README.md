@@ -23,7 +23,8 @@ Categories of recordings:
 * Ocean
 * Jungle
 * Snow
- one or two of each if local otherwise more
+
+one or two of each if local otherwise more
 
 Weather Conditions:
 * Rainy
