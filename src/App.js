@@ -3,7 +3,7 @@ import React, { useState, useRef } from "react";
 
 export default function App() {
   const audioSource =
-    "https://github.com/kevbrnen/Cs385Project/raw/main/groove.mp3";
+    "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/groove.mp3";
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
