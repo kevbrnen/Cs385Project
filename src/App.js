@@ -1,6 +1,6 @@
 import "./styles.css";
 import React, { useState, useRef } from "react";
-import {soundFiles} from "../jsonFiles/soundFiles.json"
+import soundFiles from "./jsonFiles/soundFiles.json";
 
 export default function App() {
   // Screen changing code
@@ -15,8 +15,8 @@ export default function App() {
   };
 
   // Audio Loading and Playing Code
-  //const audioSource =
-  //  "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/groove.mp3";
+  const audioSource =
+    "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/groove.mp3";
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -37,8 +37,8 @@ export default function App() {
     return (
       <div className="App">
         <h1> Screen 1 </h1>
+        <ResultsComponent arrayFromParent={soundFiles} />
 
-        <ResultsComponent arrayFromParent = {soundFiles}/>
         <button onClick={playAudio}>{isPlaying ? "Pause" : "Play"}</button>
 
         {isPlaying && <p> Playing song </p>}
@@ -62,14 +62,13 @@ export default function App() {
   }
 }
 
-function ResultsComponent(props)
-{
-  return
-  (
-    <>
-      {props.arrayFromParent.map((a,index) => (
-
-      ))}  
-    </>
-  );  
+function ResultsComponent(props) {
+  return;
+  <>
+    props.arrayFromParent.map((a,index) => (
+    <p key={index}>
+      <b>{a.title}</b>, <i>{a.environment.location}</i>
+    </p>
+    ))
+  </>;
 }
