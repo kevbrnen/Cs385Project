@@ -37,6 +37,8 @@ export default function App() {
     return (
       <div className="App">
         <h1> Screen 1 </h1>
+
+        <ResultsComponent arrayFromParent = {soundFiles}/>
         <button onClick={playAudio}>{isPlaying ? "Pause" : "Play"}</button>
 
         {isPlaying && <p> Playing song </p>}
@@ -58,4 +60,16 @@ export default function App() {
       </div>
     );
   }
+}
+
+function ResultsComponent(props)
+{
+  return
+  (
+    <>
+      {props.arrayFromParent.map((a,index) => (
+
+      ))}  
+    </>
+  );  
 }
