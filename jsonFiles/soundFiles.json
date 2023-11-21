@@ -180,6 +180,22 @@
                 "weather": "clear",
                 "location": "Spain"
             }
+        },
+        {
+            "title": "Groove",
+            "trackID": "0013",
+            "likes": 43,
+            "plays": 180,
+            "available": true,
+            "length (secs)": 410,
+            "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/groove.mp3",
+            "environment": 
+            {
+                "type": "beach",
+                "time": "day",
+                "weather": "clear",
+                "location": "Spain"
+            }
         }
     ]
 }

@@ -1,5 +1,6 @@
 import "./styles.css";
 import React, { useState, useRef } from "react";
+import {soundFiles} from "../jsonFiles/soundFiles.json"
 
 export default function App() {
   // Screen changing code
@@ -14,8 +15,8 @@ export default function App() {
   };
 
   // Audio Loading and Playing Code
-  const audioSource =
-    "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/groove.mp3";
+  //const audioSource =
+  //  "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/groove.mp3";
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
