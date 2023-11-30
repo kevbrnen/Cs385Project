@@ -1,201 +1,199 @@
 {
-    "soundFiles": 
-    [
-        {
-            "title": "Forest Walk Ambience 1",
-            "trackID": "0001",
-            "likes": 60,
-            "plays": 107,
-            "available": true,
-            "length (secs)": 245,
-            "environment": 
-            {
-                "type": "forest",
-                "time": "day",
-                "weather": "clear",
-                "location": "England"
-            }
-        },
-        {
-            "title": "Forest Walk Ambience 2",
-            "trackID": "0002",
-            "likes": 32,
-            "plays": 40,
-            "available": true,
-            "length (secs)": 175,
-            "environment": 
-            {
-                "type": "forest",
-                "time": "day",
-                "weather": "rainy",
-                "location": "Ireland"
-            }
-        },
-        {
-            "title": "Forest Walk Ambience 3",
-            "trackID": "0003",
-            "likes": 35,
-            "plays": 55,
-            "available": false,
-            "length (secs)": 122,
-            "environment": 
-            {
-                "type": "forest",
-                "time": "night",
-                "weather": "windy",
-                "location": "Ireland"
-            }
-        },
-        {
-            "title": "Beach Ambience 1",
-            "trackID": "0004",
-            "likes": 145,
-            "plays": 305,
-            "available": true,
-            "length (secs)": 184,
-            "environment": 
-            {
-                "type": "beach",
-                "time": "day",
-                "weather": "clear",
-                "location": "France"
-            }
-        },
-        {
-            "title": "Forest Walk Ambience 4",
-            "trackID": "0005",
-            "likes": 25,
-            "plays": 27,
-            "available": false,
-            "length (secs)": 125,
-            "environment": 
-            {
-                "type": "forest",
-                "time": "night",
-                "weather": "rainy",
-                "location": "Ireland"
-            }
-        },
-        {
-            "title": "Beach Ambience 2",
-            "trackID": "0006",
-            "likes": 45,
-            "plays": 87,
-            "available": false,
-            "length (secs)": 202,
-            "environment": 
-            {
-                "type": "beach",
-                "time": "night",
-                "weather": "windy",
-                "location": "England"
-            }
-        },
-        {
-            "title": "Forest Walk Ambience 3",
-            "trackID": "0007",
-            "likes": 35,
-            "plays": 55,
-            "available": false,
-            "length (secs)": 122,
-            "environment": 
-            {
-                "type": "forest",
-                "time": "night",
-                "weather": "windy",
-                "location": "Ireland"
-            }
-        },
-        {
-            "title": "Thunderstorm Ambience 1",
-            "trackID": "0008",
-            "likes": 85,
-            "plays": 144,
-            "available": true,
-            "length (secs)": 310,
-            "environment": 
-            {
-                "type": "unknown",
-                "time": "night",
-                "weather": "rainy",
-                "location": "America"
-            }
-        },
-        {
-            "title": "Snow Ambience 1",
-            "trackID": "0009",
-            "likes": 35,
-            "plays": 55,
-            "available": true,
-            "length (secs)": 122,
-            "environment": 
-            {
-                "type": "snow",
-                "time": "night",
-                "weather": "clear",
-                "location": "Finland"
-            }
-        },
-        {
-            "title": "Jungle Ambience 1",
-            "trackID": "0010",
-            "likes": 20,
-            "plays": 43,
-            "available": true,
-            "length (secs)": 202,
-            "environment": 
-            {
-                "type": "jungle",
-                "time": "night",
-                "weather": "clear",
-                "location": "Brazil"
-            }
-        },
-        {
-            "title": "City Ambience 1",
-            "trackID": "0011",
-            "likes": 5,
-            "plays": 200,
-            "available": false,
-            "length (secs)": 170,
-            "environment": 
-            {
-                "type": "city",
-                "time": "day",
-                "weather": "clear",
-                "location": "England"
-            }
-        },
-        {
-            "title": "Beach Ambience 3",
-            "trackID": "0012",
-            "likes": 43,
-            "plays": 180,
-            "available": false,
-            "length (secs)": 410,
-            "environment": 
-            {
-                "type": "beach",
-                "time": "day",
-                "weather": "clear",
-                "location": "Spain"
-            }
-        },
-        {
-            "title": "Groove",
-            "trackID": "0013",
-            "likes": 43,
-            "plays": 180,
-            "available": true,
-            "length (secs)": 410,
-            "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/groove.mp3",
-            "environment": 
-            {
-                "type": "beach",
-                "time": "day",
-                "weather": "clear",
-                "location": "Spain"
-            }
-        }
-    ]
+  "soundFiles": [
+    {
+      "title": "Forest Walk Ambience 1",
+      "trackID": "0001",
+      "likes": 60,
+      "plays": 107,
+      "available": true,
+      "length (secs)": 245,
+      "URL": null,
+      "environment": {
+        "type": "forest",
+        "time": "day",
+        "weather": "clear",
+        "location": "England"
+      }
+    },
+    {
+      "title": "Forest Walk Ambience 2",
+      "trackID": "0002",
+      "likes": 32,
+      "plays": 40,
+      "available": true,
+      "length (secs)": 175,
+      "URL": null,
+      "environment": {
+        "type": "forest",
+        "time": "day",
+        "weather": "rainy",
+        "location": "Ireland"
+      }
+    },
+    {
+      "title": "Forest Walk Ambience 3",
+      "trackID": "0003",
+      "likes": 35,
+      "plays": 55,
+      "available": false,
+      "length (secs)": 122,
+      "URL": null,
+      "environment": {
+        "type": "forest",
+        "time": "night",
+        "weather": "windy",
+        "location": "Ireland"
+      }
+    },
+    {
+      "title": "Beach Ambience 1",
+      "trackID": "0004",
+      "likes": 145,
+      "plays": 305,
+      "available": true,
+      "length (secs)": 184,
+      "URL": null,
+      "environment": {
+        "type": "beach",
+        "time": "day",
+        "weather": "clear",
+        "location": "France"
+      }
+    },
+    {
+      "title": "Forest Walk Ambience 4",
+      "trackID": "0005",
+      "likes": 25,
+      "plays": 27,
+      "available": false,
+      "length (secs)": 125,
+      "URL": null,
+      "environment": {
+        "type": "forest",
+        "time": "night",
+        "weather": "rainy",
+        "location": "Ireland"
+      }
+    },
+    {
+      "title": "Beach Ambience 2",
+      "trackID": "0006",
+      "likes": 45,
+      "plays": 87,
+      "available": false,
+      "length (secs)": 202,
+      "URL": null,
+      "environment": {
+        "type": "beach",
+        "time": "night",
+        "weather": "windy",
+        "location": "England"
+      }
+    },
+    {
+      "title": "Forest Walk Ambience 3",
+      "trackID": "0007",
+      "likes": 35,
+      "plays": 55,
+      "available": false,
+      "length (secs)": 122,
+      "URL": null,
+      "environment": {
+        "type": "forest",
+        "time": "night",
+        "weather": "windy",
+        "location": "Ireland"
+      }
+    },
+    {
+      "title": "Thunderstorm Ambience 1",
+      "trackID": "0008",
+      "likes": 85,
+      "plays": 144,
+      "available": true,
+      "length (secs)": 310,
+      "URL": null,
+      "environment": {
+        "type": "unknown",
+        "time": "night",
+        "weather": "rainy",
+        "location": "America"
+      }
+    },
+    {
+      "title": "Snow Ambience 1",
+      "trackID": "0009",
+      "likes": 35,
+      "plays": 55,
+      "available": true,
+      "length (secs)": 122,
+      "URL": null,
+      "environment": {
+        "type": "snow",
+        "time": "night",
+        "weather": "clear",
+        "location": "Finland"
+      }
+    },
+    {
+      "title": "Jungle Ambience 1",
+      "trackID": "0010",
+      "likes": 20,
+      "plays": 43,
+      "available": true,
+      "length (secs)": 202,
+      "URL": null,
+      "environment": {
+        "type": "jungle",
+        "time": "night",
+        "weather": "clear",
+        "location": "Brazil"
+      }
+    },
+    {
+      "title": "City Ambience 1",
+      "trackID": "0011",
+      "likes": 5,
+      "plays": 200,
+      "available": false,
+      "length (secs)": 170,
+      "URL": null,
+      "environment": {
+        "type": "city",
+        "time": "day",
+        "weather": "clear",
+        "location": "England"
+      }
+    },
+    {
+      "title": "Beach Ambience 3",
+      "trackID": "0012",
+      "likes": 43,
+      "plays": 180,
+      "available": false,
+      "length (secs)": 410,
+      "URL": null,
+      "environment": {
+        "type": "beach",
+        "time": "day",
+        "weather": "clear",
+        "location": "Spain"
+      }
+    },
+    {
+      "title": "Groove",
+      "trackID": "0013",
+      "likes": 43,
+      "plays": 180,
+      "available": true,
+      "length (secs)": 410,
+      "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/groove.mp3",
+      "environment": {
+        "type": "beach",
+        "time": "day",
+        "weather": "clear",
+        "location": "Spain"
+      }
+    }
+  ]
 }
