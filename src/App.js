@@ -13,6 +13,22 @@ export default function App() {
     SetScreen(screen);
   };
 
+  // text input for filter function
+  const [searchTerm, setSearchTerm] = useState("");
+
+  function onSearchFormChange(event) {
+    setSearchTerm(event.target.value);
+  }
+
+  // filter function
+  function filterFunction(searchTerm) {
+    return function (filterObject) {
+      let title = filterObject.title.toLowerCase();
+
+      return searchTerm !== "" && title.includes(searchTerm.toLowerCase());
+    };
+  }
+
   // Audio Loading and Playing Code
   const [audioUrl, setAudioUrl] = useState(null); // The URL from the JSON file for the selected audio file
   const [audioLoaded, setAudioLoaded] = useState(false); // Keeps track of whether audio has been loaded from URL
@@ -30,16 +46,28 @@ export default function App() {
       </div>
     );
   }
-  // Search Screen
+
+  //Search Screen
   else if (ScreenState === 1) {
     // Code for Search Screen
     // Calls children "ResultsComponent" (for displaying json file and selecting individual files)
     // And "AudioPlayer" (for loading audio, handling playback and displaying playback components)
+    // searchFormChange is for text input/filtering, declared initially in App function
+
     return (
       <div className="App">
         <h1> Search Screen </h1>
 
+        <p>Your current search term is: {searchTerm}</p>
+
+        <form>
+          <h3>Type your search here: </h3>
+          <input onChange={onSearchFormChange} type="text" />
+        </form>
+        <hr />
+
         <ResultsComponent
+          searchTermFromParent={searchTerm}
           setAudioUrl={setAudioUrl}
           setAudioLoaded={setAudioLoaded}
           setFileName={setFileName}
@@ -74,9 +102,13 @@ export default function App() {
 // Rendered from screen 1
 function ResultsComponent(props) {
   //Code for Loading JSON from github, including checks and error handling
+
+  //maybe data has to be switched w filteredData
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  //
+  const filteredData = data.filter(filterFunction(props.searchTermFromParent));
 
   useEffect(() => {
     const jsonURL =
@@ -119,16 +151,16 @@ function ResultsComponent(props) {
     // passes the URL of that file (contained within the JSON file) to the
     // parent "App" function. From there all necessary information (title, URL and other necessary hooks)
     // is passed to the AudioPlayer function which handles loading of files and playback
+
     return (
       <>
-        {Array.isArray(data) &&
-          data.map((a, index) => (
+        {Array.isArray(filteredData) &&
+          filteredData.map((a, index) => (
             <p key={index}>
               <b>{a.title}</b>, <i>{a.environment.location}</i>,{" "}
-              <button
+              <button>
                 disabled={a.available ? false : true}
                 onClick={() => selectAudio(a.URL, a.title)}
-              >
                 {a.available ? "Select" : "Unavailable"}
               </button>
             </p>
