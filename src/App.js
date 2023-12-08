@@ -72,6 +72,7 @@ export default function App() {
           setAudioLoaded={setAudioLoaded}
           setFileName={setFileName}
           ChangeScreen={ChangeScreen}
+          filterFunction={filterFunction}
         />
         <button onClick={() => ChangeScreen(0)}>Main Screen</button>
       </div>
@@ -108,7 +109,9 @@ function ResultsComponent(props) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   //
-  const filteredData = data.filter(filterFunction(props.searchTermFromParent));
+  const filteredData = data.filter(
+    props.filterFunction(props.searchTermFromParent),
+  );
 
   useEffect(() => {
     const jsonURL =
@@ -158,9 +161,10 @@ function ResultsComponent(props) {
           filteredData.map((a, index) => (
             <p key={index}>
               <b>{a.title}</b>, <i>{a.environment.location}</i>,{" "}
-              <button>
+              <button
                 disabled={a.available ? false : true}
                 onClick={() => selectAudio(a.URL, a.title)}
+              >
                 {a.available ? "Select" : "Unavailable"}
               </button>
             </p>
@@ -222,8 +226,6 @@ function AudioPlayer(props) {
         <button onClick={playAudio}>{isPlaying ? "Pause" : "Play"}</button>
         {isPlaying && <p> Playing song </p>}
         {!isPlaying && <p> not playing </p>}
-
-
       </>
     );
   }
