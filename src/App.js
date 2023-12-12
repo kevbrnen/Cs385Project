@@ -39,7 +39,7 @@ export default function App() {
   //const [locationSelect, setLocation] = useState("");
 
   // Filter by tags
-  function tagFilter(tagFilter) {
+  function tagFilter(typeSelect, timeSelect, weatherSelect, locationSelect) {
     return function (audioFile) {
       let type = audioFile.environment.type
         ? audioFile.environment.type.toLowerCase()
