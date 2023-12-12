@@ -3,6 +3,8 @@ import React, { useState, useRef, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import Dropdown from "react-bootstrap/Dropdown";
+
 //import bootstrap from "bootstrap";
 //import Button from "react-bootstrap/Button";
 //import soundFiles from "./jsonFiles/soundFiles.json";
@@ -31,6 +33,25 @@ export default function App() {
       let title = filterObject.title.toLowerCase();
 
       return searchTerm !== "" && title.includes(searchTerm.toLowerCase());
+    };
+  }
+
+  // Tag variables
+  const [typeSelect, setType] = useState("");
+  const [timeSelect, setTime] = useState("");
+  const [weatherSelect, setWeather] = useState("");
+  const [locationSelect, setLocation] = useState("");
+
+  function tagFilter(typeSelect, timeSelect, weatherSelect, locationSelect) 
+  {
+    return function (tagFilter) 
+    {
+      let envType = tagFilter.type.toLowerCase();
+      let time = tagFilter.time.toLowerCase();
+      let weather = tagFilter.weather.toLowerCase();
+      let location = tagFilter.location.toLowerCase();
+
+      return tagFilter !== "" && 
     };
   }
 
@@ -69,6 +90,18 @@ export default function App() {
           <h3>Type your search here: </h3>
           <input onChange={onSearchFormChange} type="text" />
         </form>
+
+        <Dropdown>
+          <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+            Environment Type
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item href="#">Forest</Dropdown.Item>
+            <Dropdown.Item href="#">Beach</Dropdown.Item>
+            <Dropdown.Item href="#">Snow</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
         <hr />
 
         <ResultsComponent
