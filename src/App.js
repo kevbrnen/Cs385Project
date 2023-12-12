@@ -32,7 +32,8 @@ export default function App() {
     return function (filterObject) {
       let title = filterObject.title.toLowerCase();
 
-      return searchTerm !== "" && title.includes(searchTerm.toLowerCase());
+      // if no input render all, else render files that contain search term
+      return searchTerm === "" || title.includes(searchTerm.toLowerCase());
     };
   }
 
@@ -42,14 +43,15 @@ export default function App() {
   const [weatherSelect, setWeather] = useState("");
   const [locationSelect, setLocation] = useState("");
 
+  // Filter by tags
   function tagFilter(typeSelect, timeSelect, weatherSelect, locationSelect) {
     return function (tagFilter) {
-      let envType = tagFilter.type.toLowerCase();
-      let time = tagFilter.time.toLowerCase();
-      let weather = tagFilter.weather.toLowerCase();
-      let location = tagFilter.location.toLowerCase();
+      let type = typeSelect.toLowerCase();
+      //let time = timeSelect.toLowerCase();
+      //let weather = weatherSelect.toLowerCase();
+      //let location = locationSelect.toLowerCase();
 
-      return tagFilter !== "" && envType.includes(tagFilter.toLowerCase());
+      return typeSelect === "" || type.includes(typeSelect.toLowerCase());
     };
   }
 
@@ -89,7 +91,8 @@ export default function App() {
           <input onChange={onSearchFormChange} type="text" />
         </form>
 
-        <Dropdown>
+        <h4>Filter by tag:</h4>
+        <Dropdown onSelect={(value) => setType(value)}>
           <Dropdown.Toggle variant="secondary" id="dropdown-basic">
             Environment Type
           </Dropdown.Toggle>
@@ -97,18 +100,26 @@ export default function App() {
           <Dropdown.Menu>
             <Dropdown.Item href="#">Forest</Dropdown.Item>
             <Dropdown.Item href="#">Beach</Dropdown.Item>
-            <Dropdown.Item href="#">Snow</Dropdown.Item>
+            <Dropdown.Item href="#">Jungle</Dropdown.Item>
+            <Dropdown.Item href="#">City</Dropdown.Item>
+            <Dropdown.Item href="#">Plains</Dropdown.Item>
+            <Dropdown.Item href="#">Unknown</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         <hr />
 
         <ResultsComponent
           searchTermFromParent={searchTerm}
+          typeFromParent={typeSelect}
+          timeFromParent={timeSelect}
+          weatherFromParent={weatherSelect}
+          locationFromParent={locationSelect}
           setAudioUrl={setAudioUrl}
           setAudioLoaded={setAudioLoaded}
           setFileName={setFileName}
           ChangeScreen={ChangeScreen}
           filterFunction={filterFunction}
+          tagFilter={tagFilter}
         />
         <button onClick={() => ChangeScreen(0)}>Main Screen</button>
       </div>
@@ -144,9 +155,19 @@ function ResultsComponent(props) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  //
+
   const filteredData = data.filter(
     props.filterFunction(props.searchTermFromParent),
+  );
+
+  //tag filtration
+  const tagData = filteredData.filter(
+    props.tagFilter(
+      props.typeFromParent,
+      props.timeFromParent,
+      props.weatherFromParent,
+      props.locationFromParent,
+    ),
   );
 
   useEffect(() => {
@@ -194,8 +215,8 @@ function ResultsComponent(props) {
     return (
       <>
         <Container>
-          {Array.isArray(filteredData) &&
-            filteredData.map((a, index) => (
+          {Array.isArray(tagData) &&
+            tagData.map((a, index) => (
               <p key={index}>
                 <Card style={{ width: "18rem" }}>
                   <Card.Img

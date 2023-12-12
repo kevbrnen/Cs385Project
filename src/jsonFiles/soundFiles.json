@@ -129,9 +129,9 @@
       "length (secs)": 122,
       "URL": null,
       "environment": {
-        "type": "snow",
+        "type": "forest",
         "time": "night",
-        "weather": "clear",
+        "weather": "snowing",
         "location": "Finland"
       }
     },
