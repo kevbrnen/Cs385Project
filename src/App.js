@@ -92,12 +92,12 @@ export default function App() {
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
-            <Dropdown.Item eventKey="forest">forest</Dropdown.Item>
-            <Dropdown.Item href="#">beach</Dropdown.Item>
-            <Dropdown.Item href="#">jungle</Dropdown.Item>
-            <Dropdown.Item href="#">city</Dropdown.Item>
-            <Dropdown.Item href="#">plains</Dropdown.Item>
-            <Dropdown.Item href="#">unknown</Dropdown.Item>
+            <Dropdown.Item eventKey="forest">Forest</Dropdown.Item>
+            <Dropdown.Item eventKey="beach">Beach</Dropdown.Item>
+            <Dropdown.Item eventKey="jungle">Jungle</Dropdown.Item>
+            <Dropdown.Item eventKey="city">City</Dropdown.Item>
+            <Dropdown.Item eventKey="plains">Plains</Dropdown.Item>
+            <Dropdown.Item eventKey="unknown">Unknown</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         <hr />
