@@ -34,18 +34,34 @@ export default function App() {
 
   // Tag variables
   const [typeSelect, setType] = useState("");
-  //const [timeSelect, setTime] = useState("");
-  //const [weatherSelect, setWeather] = useState("");
-  //const [locationSelect, setLocation] = useState("");
+  const [timeSelect, setTime] = useState("");
+  const [weatherSelect, setWeather] = useState("");
+  const [locationSelect, setLocation] = useState("");
 
-  // Filter by tags
+  // filter by tags: environment type, time of day, weather and location/country
   function tagFilter(typeSelect, timeSelect, weatherSelect, locationSelect) {
     return function (audioFile) {
       let type = audioFile.environment.type
         ? audioFile.environment.type.toLowerCase()
         : "";
+      let time = audioFile.environment.time
+        ? audioFile.environment.time.toLowerCase()
+        : "";
+      let weather = audioFile.environment.weather
+        ? audioFile.environment.weather.toLowerCase()
+        : "";
+      let location = audioFile.environment.location
+        ? audioFile.environment.location.toLowerCase()
+        : "";
 
-      return typeSelect === "" || type.includes(typeSelect.toLowerCase());
+      return (
+        (typeSelect === "" || type.includes(typeSelect.toLowerCase())) &&
+        (timeSelect === "" || time.includes(timeSelect.toLowerCase())) &&
+        (weatherSelect === "" ||
+          weather.includes(weatherSelect.toLowerCase())) &&
+        (locationSelect === "" ||
+          location.includes(locationSelect.toLowerCase()))
+      );
     };
   }
 
@@ -86,7 +102,7 @@ export default function App() {
         </form>
 
         <h4>Filter by tag:</h4>
-        <Dropdown onSelect={(value) => setType(value)}>
+        <Dropdown onSelect={(typeValue) => setType(typeValue)}>
           <Dropdown.Toggle variant="secondary" id="dropdown-basic">
             Environment Type
           </Dropdown.Toggle>
@@ -100,14 +116,53 @@ export default function App() {
             <Dropdown.Item eventKey="unknown">Unknown</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
+
+        <Dropdown onSelect={(timeValue) => setTime(timeValue)}>
+          <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+            Time of Day
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item eventKey="day">Day</Dropdown.Item>
+            <Dropdown.Item eventKey="night">Night</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+
+        <Dropdown onSelect={(weatherValue) => setWeather(weatherValue)}>
+          <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+            Weather Conditions
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item eventKey="clear">Clear</Dropdown.Item>
+            <Dropdown.Item eventKey="windy">Windy</Dropdown.Item>
+            <Dropdown.Item eventKey="raining">Raining</Dropdown.Item>
+            <Dropdown.Item eventKey="snowing">Snowing</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+
+        <Dropdown onSelect={(locationValue) => setLocation(locationValue)}>
+          <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+            Location
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item eventKey="Ireland">Ireland</Dropdown.Item>
+            <Dropdown.Item eventKey="England">England</Dropdown.Item>
+            <Dropdown.Item eventKey="America">America</Dropdown.Item>
+            <Dropdown.Item eventKey="Finland">Finland</Dropdown.Item>
+            <Dropdown.Item eventKey="Brazil">Brazil</Dropdown.Item>
+            <Dropdown.Item eventKey="Spain">Spain</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
         <hr />
 
         <ResultsComponent
           searchTermFromParent={searchTerm}
           typeFromParent={typeSelect}
-          //timeFromParent={timeSelect}
-          //weatherFromParent={weatherSelect}
-          //locationFromParent={locationSelect}
+          timeFromParent={timeSelect}
+          weatherFromParent={weatherSelect}
+          locationFromParent={locationSelect}
           setAudioUrl={setAudioUrl}
           setAudioLoaded={setAudioLoaded}
           setFileName={setFileName}
@@ -156,10 +211,14 @@ function ResultsComponent(props) {
   );
 
   //tag filtration, re-add props for other variables once working
-  const tagData = filteredData.filter(props.tagFilter(props.typeFromParent));
-
-  //test dropdown output
-  <p>typeSelect</p>;
+  const tagData = filteredData.filter(
+    props.tagFilter(
+      props.typeFromParent,
+      props.timeFromParent,
+      props.weatherFromParent,
+      props.locationFromParent,
+    ),
+  );
 
   useEffect(() => {
     const jsonURL =

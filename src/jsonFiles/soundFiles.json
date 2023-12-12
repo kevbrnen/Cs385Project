@@ -41,7 +41,7 @@
       "environment": {
         "type": "forest",
         "time": "day",
-        "weather": "rainy",
+        "weather": "raining",
         "location": "Ireland"
       }
     },
@@ -71,7 +71,7 @@
       "environment": {
         "type": "forest",
         "time": "night",
-        "weather": "rainy",
+        "weather": "raining",
         "location": "Ireland"
       }
     },
@@ -116,7 +116,7 @@
       "environment": {
         "type": "unknown",
         "time": "night",
-        "weather": "rainy",
+        "weather": "raining",
         "location": "America"
       }
     },
