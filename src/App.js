@@ -42,16 +42,14 @@ export default function App() {
   const [weatherSelect, setWeather] = useState("");
   const [locationSelect, setLocation] = useState("");
 
-  function tagFilter(typeSelect, timeSelect, weatherSelect, locationSelect) 
-  {
-    return function (tagFilter) 
-    {
+  function tagFilter(typeSelect, timeSelect, weatherSelect, locationSelect) {
+    return function (tagFilter) {
       let envType = tagFilter.type.toLowerCase();
       let time = tagFilter.time.toLowerCase();
       let weather = tagFilter.weather.toLowerCase();
       let location = tagFilter.location.toLowerCase();
 
-      return tagFilter !== "" && 
+      return tagFilter !== "" && envType.includes(tagFilter.toLowerCase());
     };
   }
 
