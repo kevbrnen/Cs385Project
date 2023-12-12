@@ -5,24 +5,20 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Dropdown from "react-bootstrap/Dropdown";
 
-//import bootstrap from "bootstrap";
-//import Button from "react-bootstrap/Button";
-//import soundFiles from "./jsonFiles/soundFiles.json";
-
 export default function App() {
   // Screen changing code
   // 0 => Main Screen
   // 1 => Search Screen
   // 2 => Audio Player Screen
+  // 3 => Liked Audio Screen
   const [ScreenState, SetScreen] = useState(0);
 
   const ChangeScreen = (screen) => {
     SetScreen(screen);
   };
 
-  // text input for filter function
+  // text input for filename filtering
   const [searchTerm, setSearchTerm] = useState("");
-
   function onSearchFormChange(event) {
     setSearchTerm(event.target.value);
   }
@@ -31,7 +27,6 @@ export default function App() {
   function filterFunction(searchTerm) {
     return function (filterObject) {
       let title = filterObject.title.toLowerCase();
-
       // if no input render all, else render files that contain search term
       return searchTerm === "" || title.includes(searchTerm.toLowerCase());
     };
@@ -39,17 +34,16 @@ export default function App() {
 
   // Tag variables
   const [typeSelect, setType] = useState("");
-  const [timeSelect, setTime] = useState("");
-  const [weatherSelect, setWeather] = useState("");
-  const [locationSelect, setLocation] = useState("");
+  //const [timeSelect, setTime] = useState("");
+  //const [weatherSelect, setWeather] = useState("");
+  //const [locationSelect, setLocation] = useState("");
 
   // Filter by tags
-  function tagFilter(typeSelect, timeSelect, weatherSelect, locationSelect) {
-    return function (tagFilter) {
-      let type = typeSelect.toLowerCase();
-      //let time = timeSelect.toLowerCase();
-      //let weather = weatherSelect.toLowerCase();
-      //let location = locationSelect.toLowerCase();
+  function tagFilter(tagFilter) {
+    return function (audioFile) {
+      let type = audioFile.environment.type
+        ? audioFile.environment.type.toLowerCase()
+        : "";
 
       return typeSelect === "" || type.includes(typeSelect.toLowerCase());
     };
@@ -98,12 +92,12 @@ export default function App() {
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
-            <Dropdown.Item href="#">Forest</Dropdown.Item>
-            <Dropdown.Item href="#">Beach</Dropdown.Item>
-            <Dropdown.Item href="#">Jungle</Dropdown.Item>
-            <Dropdown.Item href="#">City</Dropdown.Item>
-            <Dropdown.Item href="#">Plains</Dropdown.Item>
-            <Dropdown.Item href="#">Unknown</Dropdown.Item>
+            <Dropdown.Item eventKey="forest">forest</Dropdown.Item>
+            <Dropdown.Item href="#">beach</Dropdown.Item>
+            <Dropdown.Item href="#">jungle</Dropdown.Item>
+            <Dropdown.Item href="#">city</Dropdown.Item>
+            <Dropdown.Item href="#">plains</Dropdown.Item>
+            <Dropdown.Item href="#">unknown</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         <hr />
@@ -111,9 +105,9 @@ export default function App() {
         <ResultsComponent
           searchTermFromParent={searchTerm}
           typeFromParent={typeSelect}
-          timeFromParent={timeSelect}
-          weatherFromParent={weatherSelect}
-          locationFromParent={locationSelect}
+          //timeFromParent={timeSelect}
+          //weatherFromParent={weatherSelect}
+          //locationFromParent={locationSelect}
           setAudioUrl={setAudioUrl}
           setAudioLoaded={setAudioLoaded}
           setFileName={setFileName}
@@ -156,19 +150,16 @@ function ResultsComponent(props) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // text search filter
   const filteredData = data.filter(
     props.filterFunction(props.searchTermFromParent),
   );
 
-  //tag filtration
-  const tagData = filteredData.filter(
-    props.tagFilter(
-      props.typeFromParent,
-      props.timeFromParent,
-      props.weatherFromParent,
-      props.locationFromParent,
-    ),
-  );
+  //tag filtration, re-add props for other variables once working
+  const tagData = filteredData.filter(props.tagFilter(props.typeFromParent));
+
+  //test dropdown output
+  <p>typeSelect</p>;
 
   useEffect(() => {
     const jsonURL =
