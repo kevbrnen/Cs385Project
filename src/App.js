@@ -1,5 +1,8 @@
 import "./styles.css";
 import React, { useState, useRef, useEffect } from "react";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
 //import soundFiles from "./jsonFiles/soundFiles.json";
 
 export default function App() {
@@ -157,18 +160,31 @@ function ResultsComponent(props) {
 
     return (
       <>
-        {Array.isArray(filteredData) &&
-          filteredData.map((a, index) => (
-            <p key={index}>
-              <b>{a.title}</b>, <i>{a.environment.location}</i>,{" "}
-              <button
-                disabled={a.available ? false : true}
-                onClick={() => selectAudio(a.URL, a.title)}
-              >
-                {a.available ? "Select" : "Unavailable"}
-              </button>
-            </p>
-          ))}
+        <Container>
+          {Array.isArray(filteredData) &&
+            filteredData.map((a, index) => (
+              <p key={index}>
+                <Card style={{ width: "18rem" }}>
+                  <Card.Img
+                    variant="top"
+                    src="holder.js/100px180"
+                    margin="auto"
+                  />
+                  <Card.Body>
+                    <Card.Title>{a.title}</Card.Title>
+                    <Card.Text>{a.environment.location}</Card.Text>
+                    <Button
+                      variant="primary"
+                      disabled={a.available ? false : true}
+                      onClick={() => selectAudio(a.URL, a.title)}
+                    >
+                      {a.available ? "Select" : "Unavailable"}
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </p>
+            ))}
+        </Container>
       </>
     );
   }
