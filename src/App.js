@@ -6,7 +6,6 @@ import Container from "react-bootstrap/Container";
 //import bootstrap from "bootstrap";
 //import Button from "react-bootstrap/Button";
 //import soundFiles from "./jsonFiles/soundFiles.json";
-//fggjf
 
 export default function App() {
   // Screen changing code
