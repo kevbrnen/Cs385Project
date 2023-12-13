@@ -71,18 +71,42 @@ export default function App() {
   const [fileName, setFileName] = useState(""); // The file name of the selected audio file
   const audioRef = useRef(null); // Reference to selected audio element
 
+  // Time of day based on current hour
+  let timeOfDay;
+  const date = new Date();
+  const hours = date.getHours();
+  if (hours >= 4 && hours < 12) {
+    timeOfDay = "Morning";
+  } else if (hours >= 12 && hours < 18) {
+    timeOfDay = "Afternoon";
+  } else {
+    timeOfDay = "Night";
+  }
+
   // Home Screen
   if (ScreenState === 0) {
-    //Code For Home Screen
+    // Code For Home Screen
+    // Calls recommended function which shows 4 Tracks
+    // Filtered by the current time of day (Day/night)
     return (
       <div className="App">
+        {" "}
         <h1> Main Screen </h1>
-
+        <hr />
+        <h1> Recommended {timeOfDay} Tracks</h1>
+        <Recommended
+          timeOfDay_FromParent={timeOfDay}
+          setAudioUrl={setAudioUrl}
+          setAudioLoaded={setAudioLoaded}
+          setFileName={setFileName}
+          ChangeScreen={ChangeScreen}
+          filterFunction={filterFunction}
+          tagFilter={tagFilter}
+        />
         <button onClick={() => ChangeScreen(1)}>Search Screen</button>
       </div>
     );
   }
-
   //Search Screen
   else if (ScreenState === 1) {
     // Code for Search Screen
@@ -92,15 +116,13 @@ export default function App() {
 
     return (
       <div className="App">
+        {" "}
         <h1> Search Screen </h1>
-
         <p>Your current search term is: {searchTerm}</p>
-
         <form>
           <h3>Type your search here: </h3>
           <input onChange={onSearchFormChange} type="text" />
         </form>
-
         <h4>Filter by tag:</h4>
         <Dropdown onSelect={(typeValue) => setType(typeValue)}>
           <Dropdown.Toggle variant="secondary" id="dropdown-basic">
@@ -116,7 +138,6 @@ export default function App() {
             <Dropdown.Item eventKey="unknown">Unknown</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-
         <Dropdown onSelect={(timeValue) => setTime(timeValue)}>
           <Dropdown.Toggle variant="secondary" id="dropdown-basic">
             Time of Day
@@ -127,7 +148,6 @@ export default function App() {
             <Dropdown.Item eventKey="night">Night</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-
         <Dropdown onSelect={(weatherValue) => setWeather(weatherValue)}>
           <Dropdown.Toggle variant="secondary" id="dropdown-basic">
             Weather Conditions
@@ -140,7 +160,6 @@ export default function App() {
             <Dropdown.Item eventKey="snowing">Snowing</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-
         <Dropdown onSelect={(locationValue) => setLocation(locationValue)}>
           <Dropdown.Toggle variant="secondary" id="dropdown-basic">
             Location
@@ -156,7 +175,6 @@ export default function App() {
           </Dropdown.Menu>
         </Dropdown>
         <hr />
-
         <ResultsComponent
           searchTermFromParent={searchTerm}
           typeFromParent={typeSelect}
@@ -179,6 +197,7 @@ export default function App() {
     // Rendered if an audio file is selected from the search screen
     return (
       <div className="App">
+        {" "}
         <h1> Audio Player </h1>
         <AudioPlayer
           audioUrl={audioUrl}
@@ -346,6 +365,98 @@ function AudioPlayer(props) {
         <button onClick={playAudio}>{isPlaying ? "Pause" : "Play"}</button>
         {isPlaying && <p> Playing song </p>}
         {!isPlaying && <p> not playing </p>}
+      </>
+    );
+  }
+}
+
+// Exact same code as ResultsComponent, however here we take in the time of day and use that as
+// the only filter for sounds
+function Recommended(props) {
+  //Code for Loading JSON from github, including checks and error handling
+
+  //maybe data has to be switched w filteredData
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const jsonURL =
+      "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/src/jsonFiles/soundFiles.json";
+
+    async function fetchData() {
+      try {
+        const response = await fetch(jsonURL);
+        const json = await response.json();
+        setData(json.soundFiles);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  // Called from onClick, sets the hooks that need to be set with the correct
+  // information for the selected audio file
+  // Also changes the screen state to 2 to render the Audio Player Screen
+  const selectAudio = (audioUrl, title) => {
+    props.setAudioUrl(audioUrl);
+    props.setAudioLoaded(false);
+    props.setFileName(title);
+    props.ChangeScreen(2);
+  };
+
+  //Conditional rendering of json file, including buttons to select different audio URLs (need to be included in JSON)
+  //to play from
+  if (error) {
+    return <h1>Oops! An error has occurred: {error.toString()}</h1>;
+  } else if (loading) {
+    return <h1>Loading Data... Please wait!</h1>;
+  } else {
+    // Variable to hold string value of current time of day
+    let TOD;
+    if (props.timeOfDay_FromParent === "Morning" || "Afternoon") {
+      TOD = "day";
+    } else {
+      TOD = "night";
+    }
+
+    // Conditional rendering using filter function that checks if the current
+    // TOD matches the "timestamp" for each track in the JSON file
+    // Slices the result to only show 4 recommended tracks
+    return (
+      <>
+        <Container>
+          {Array.isArray(data) &&
+            data
+              .filter((a) => a.environment.time === TOD)
+              .slice(0, 4)
+              .map((a, index) => (
+                <p key={index}>
+                  <Card style={{ width: "18rem" }}>
+                    <Card.Img
+                      variant="top"
+                      src="holder.js/100px180"
+                      margin="auto"
+                    />
+                    <Card.Body>
+                      <Card.Title>{a.title}</Card.Title>
+                      <Card.Text>{a.environment.location}</Card.Text>
+                      <Button
+                        variant="primary"
+                        disabled={a.available ? false : true}
+                        onClick={() => selectAudio(a.URL, a.title)}
+                      >
+                        {a.available ? "Select" : "Unavailable"}
+                      </Button>
+                    </Card.Body>
+                  </Card>
+                </p>
+              ))}
+        </Container>
       </>
     );
   }
