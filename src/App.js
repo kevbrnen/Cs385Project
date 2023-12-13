@@ -4,6 +4,8 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Dropdown from "react-bootstrap/Dropdown";
+import Row from "react-bootstrap/Row";
+import Image from "react-bootstrap/Image";
 
 export default function App() {
   // Screen changing code
@@ -284,29 +286,31 @@ function ResultsComponent(props) {
     return (
       <>
         <Container>
-          {Array.isArray(tagData) &&
-            tagData.map((a, index) => (
-              <p key={index}>
-                <Card style={{ width: "18rem" }}>
-                  <Card.Img
-                    variant="top"
-                    src="holder.js/100px180"
-                    margin="auto"
-                  />
-                  <Card.Body>
-                    <Card.Title>{a.title}</Card.Title>
-                    <Card.Text>{a.environment.location}</Card.Text>
-                    <Button
-                      variant="primary"
-                      disabled={a.available ? false : true}
-                      onClick={() => selectAudio(a.URL, a.title)}
-                    >
-                      {a.available ? "Select" : "Unavailable"}
-                    </Button>
-                  </Card.Body>
-                </Card>
-              </p>
-            ))}
+          <Row>
+            {Array.isArray(tagData) &&
+              tagData.map((a, index) => (
+                <div key={index} className="col-6 mb-4">
+                  <Card className="d-flex flex-column h-100">
+                    <Card.Img
+                      variant="top"
+                      src="holder.js/100px180"
+                      margin="auto"
+                    />
+                    <Card.Body>
+                      <Card.Title>{a.title}</Card.Title>
+                      <Card.Text>{a.environment.location}</Card.Text>
+                      <Button
+                        variant="primary"
+                        disabled={a.available ? false : true}
+                        onClick={() => selectAudio(a.URL, a.title)}
+                      >
+                        {a.available ? "Select" : "Unavailable"}
+                      </Button>
+                    </Card.Body>
+                  </Card>
+                </div>
+              ))}
+          </Row>
         </Container>
       </>
     );
@@ -353,7 +357,13 @@ function AudioPlayer(props) {
     //If URL field is not null, attemp to load the audio and display any playback components
     return (
       <>
-        <audio ref={props.audioRef} onLoadedData={checkAudioLoad}>
+        <hr />
+
+        <Image src="..." fluid className="rounded mx-auto d-block" />
+
+        <hr />
+
+        <audio ref={props.audioRef} onLoadedData={checkAudioLoad} controls>
           <source src={props.audioUrl} type="audio/mp3" />
         </audio>
         {props.audioLoaded ? (
@@ -430,32 +440,34 @@ function Recommended(props) {
     return (
       <>
         <Container>
-          {Array.isArray(data) &&
-            data
-              .filter((a) => a.environment.time === TOD)
-              .slice(0, 4)
-              .map((a, index) => (
-                <p key={index}>
-                  <Card style={{ width: "18rem" }}>
-                    <Card.Img
-                      variant="top"
-                      src="holder.js/100px180"
-                      margin="auto"
-                    />
-                    <Card.Body>
-                      <Card.Title>{a.title}</Card.Title>
-                      <Card.Text>{a.environment.location}</Card.Text>
-                      <Button
-                        variant="primary"
-                        disabled={a.available ? false : true}
-                        onClick={() => selectAudio(a.URL, a.title)}
-                      >
-                        {a.available ? "Select" : "Unavailable"}
-                      </Button>
-                    </Card.Body>
-                  </Card>
-                </p>
-              ))}
+          <Row>
+            {Array.isArray(data) &&
+              data
+                .filter((a) => a.environment.time === TOD)
+                .slice(0, 4)
+                .map((a, index) => (
+                  <div key={index} className="col-6 mb-4">
+                    <Card className="d-flex flex-column h-100">
+                      <Card.Img
+                        variant="top"
+                        src="holder.js/100px180"
+                        margin="auto"
+                      />
+                      <Card.Body>
+                        <Card.Title>{a.title}</Card.Title>
+                        <Card.Text>{a.environment.location}</Card.Text>
+                        <Button
+                          variant="primary"
+                          disabled={a.available ? false : true}
+                          onClick={() => selectAudio(a.URL, a.title)}
+                        >
+                          {a.available ? "Select" : "Unavailable"}
+                        </Button>
+                      </Card.Body>
+                    </Card>
+                  </div>
+                ))}
+          </Row>
         </Container>
       </>
     );
