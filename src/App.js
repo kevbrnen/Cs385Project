@@ -105,7 +105,7 @@ export default function App() {
           filterFunction={filterFunction}
           tagFilter={tagFilter}
         />
-        <button onClick={() => ChangeScreen(1)}>Search Screen</button>
+        <Dock ChangeScreen={ChangeScreen} />
       </div>
     );
   }
@@ -190,7 +190,7 @@ export default function App() {
           filterFunction={filterFunction}
           tagFilter={tagFilter}
         />
-        <button onClick={() => ChangeScreen(0)}>Main Screen</button>
+        <Dock ChangeScreen={ChangeScreen} />
       </div>
     );
   }
@@ -208,9 +208,7 @@ export default function App() {
           setAudioLoaded={setAudioLoaded}
           fileName={fileName}
         />
-        <></>
-        <button onClick={() => ChangeScreen(0)}>Main Screen</button>{" "}
-        <button onClick={() => ChangeScreen(1)}>Search Screen</button>
+        <Dock ChangeScreen={ChangeScreen} />
       </div>
     );
   }
@@ -472,4 +470,25 @@ function Recommended(props) {
       </>
     );
   }
+}
+
+function Dock(props) {
+  return (
+    <>
+      <hr />{" "}
+      <Button variant="success" onClick={() => props.ChangeScreen(0)}>
+        {" "}
+        Home{" "}
+      </Button>{" "}
+      <Button variant="info" onClick={() => props.ChangeScreen(1)}>
+        {" "}
+        Search{" "}
+      </Button>{" "}
+      <Button variant="warning" onClick={() => props.ChangeScreen(3)}>
+        {" "}
+        Likes{" "}
+      </Button>{" "}
+      <hr />
+    </>
+  );
 }
