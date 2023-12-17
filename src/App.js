@@ -71,6 +71,7 @@ export default function App() {
   const [audioUrl, setAudioUrl] = useState(null); // The URL from the JSON file for the selected audio file
   const [audioLoaded, setAudioLoaded] = useState(false); // Keeps track of whether audio has been loaded from URL
   const [fileName, setFileName] = useState(""); // The file name of the selected audio file
+  const [trackID, setTrackID] = useState(""); // track ID of selected audio file
   const audioRef = useRef(null); // Reference to selected audio element
 
   // Time of day based on current hour
@@ -83,6 +84,27 @@ export default function App() {
     timeOfDay = "Afternoon";
   } else {
     timeOfDay = "Night";
+  }
+
+  // variables for liking audio files
+  const [liked, setLiked] = useState([]);
+
+  // add audio to liked array
+  function addLiked(title, trackID, audioUrl) {
+    // spread operator
+    setLiked([...liked, { title, trackID, audioUrl }]);
+  }
+
+  // find trackID of audio
+  function findAudioIndex(needle) {
+    return function (haystack) {
+      return haystack.trackID === needle.trackID;
+    };
+  }
+
+  function removeLiked(trackID) {
+    const updatedLiked = liked.filter((audio) => audio.trackID !== trackID);
+    setLiked(updatedLiked);
   }
 
   // Home Screen
@@ -185,10 +207,12 @@ export default function App() {
           locationFromParent={locationSelect}
           setAudioUrl={setAudioUrl}
           setAudioLoaded={setAudioLoaded}
+          setTrackID={setTrackID}
           setFileName={setFileName}
           ChangeScreen={ChangeScreen}
           filterFunction={filterFunction}
           tagFilter={tagFilter}
+          addLiked={addLiked}
         />
         <Dock ChangeScreen={ChangeScreen} />
       </div>
@@ -206,8 +230,23 @@ export default function App() {
           audioRef={audioRef}
           audioLoaded={audioLoaded}
           setAudioLoaded={setAudioLoaded}
+          trackID={trackID}
           fileName={fileName}
+          addLiked={addLiked}
         />
+        <button onClick={() => addLiked(fileName, trackID, audioUrl)}>
+          Like
+        </button>
+        <Dock ChangeScreen={ChangeScreen} />
+      </div>
+    );
+  }
+  // liked audio screen
+  else if (ScreenState === 3) {
+    return (
+      <div className="App">
+        <h1> Liked Audio </h1>
+        <LikedAudioScreen liked={liked} removeLiked={removeLiked} />
         <Dock ChangeScreen={ChangeScreen} />
       </div>
     );
@@ -261,7 +300,7 @@ function ResultsComponent(props) {
   // Called from onClick, sets the hooks that need to be set with the correct
   // information for the selected audio file
   // Also changes the screen state to 2 to render the Audio Player Screen
-  const selectAudio = (audioUrl, title) => {
+  const selectAudio = (audioUrl, title, trackID) => {
     props.setAudioUrl(audioUrl);
     props.setAudioLoaded(false);
     props.setFileName(title);
@@ -300,7 +339,7 @@ function ResultsComponent(props) {
                       <Button
                         variant="primary"
                         disabled={a.available ? false : true}
-                        onClick={() => selectAudio(a.URL, a.title)}
+                        onClick={() => selectAudio(a.URL, a.title, a.trackID)}
                       >
                         {a.available ? "Select" : "Unavailable"}
                       </Button>
@@ -410,7 +449,7 @@ function Recommended(props) {
   // Called from onClick, sets the hooks that need to be set with the correct
   // information for the selected audio file
   // Also changes the screen state to 2 to render the Audio Player Screen
-  const selectAudio = (audioUrl, title) => {
+  const selectAudio = (audioUrl, title, trackID) => {
     props.setAudioUrl(audioUrl);
     props.setAudioLoaded(false);
     props.setFileName(title);
@@ -457,7 +496,7 @@ function Recommended(props) {
                         <Button
                           variant="primary"
                           disabled={a.available ? false : true}
-                          onClick={() => selectAudio(a.URL, a.title)}
+                          onClick={() => selectAudio(a.URL, a.title, a.trackID)}
                         >
                           {a.available ? "Select" : "Unavailable"}
                         </Button>
@@ -489,6 +528,51 @@ function Dock(props) {
         Likes{" "}
       </Button>{" "}
       <hr />
+    </>
+  );
+}
+
+function LikedAudioScreen({ liked, removeLiked }) {
+  return (
+    <>
+      {liked.length === 0 ? (
+        <p>No liked audio files.</p>
+      ) : (
+        <Container>
+          <Row>
+            {Array.isArray(liked) &&
+              liked.map((a, index) => (
+                // Replace `data` with your actual data source
+                <div key={index} className="col-6 mb-4">
+                  <Card className="d-flex flex-column h-100">
+                    <Card.Img
+                      variant="top"
+                      src="holder.js/100px180"
+                      margin="auto"
+                    />
+                    <Card.Body>
+                      <Card.Title>{a.title}</Card.Title>
+                      <Card.Text>{a.trackID}</Card.Text>
+                      <Button
+                        variant="primary"
+                        disabled={a.available ? false : true}
+                        onClick={() => selectAudio(a.URL, a.title, a.trackID)}
+                      >
+                        {a.available ? "Select" : "Unavailable"}
+                      </Button>
+                    </Card.Body>
+                    <Button
+                      variant="danger"
+                      onClick={() => removeLiked(trackID)}
+                    >
+                      Unlike
+                    </Button>
+                  </Card>
+                </div>
+              ))}
+          </Row>
+        </Container>
+      )}
     </>
   );
 }
