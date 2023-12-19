@@ -563,7 +563,7 @@ function LikedAudioScreen({ liked, removeLiked }) {
                     </Card.Body>
                     <Button
                       variant="danger"
-                      onClick={() => removeLiked(trackID)}
+                      onClick={() => removeLiked(a.trackID)}
                     >
                       Unlike
                     </Button>
