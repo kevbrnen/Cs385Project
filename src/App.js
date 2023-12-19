@@ -69,6 +69,7 @@ export default function App() {
 
   // Audio Loading and Playing Code
   const [audioUrl, setAudioUrl] = useState(null); // The URL from the JSON file for the selected audio file
+  const [ImageURL, setImageURL] = useState(null);
   const [audioLoaded, setAudioLoaded] = useState(false); // Keeps track of whether audio has been loaded from URL
   const [fileName, setFileName] = useState(""); // The file name of the selected audio file
   const [trackID, setTrackID] = useState(""); // track ID of selected audio file
@@ -90,9 +91,9 @@ export default function App() {
   const [liked, setLiked] = useState([]);
 
   // add audio to liked array
-  function addLiked(title, trackID, audioUrl) {
+  function addLiked(title, trackID, audioUrl, ImageURL) {
     // spread operator
-    setLiked([...liked, { title, trackID, audioUrl }]);
+    setLiked([...liked, { title, trackID, audioUrl, ImageURL }]);
   }
 
   // find trackID of audio
@@ -126,6 +127,7 @@ export default function App() {
           ChangeScreen={ChangeScreen}
           filterFunction={filterFunction}
           tagFilter={tagFilter}
+          setImageURL={setImageURL}
         />
         <Dock ChangeScreen={ChangeScreen} />
       </div>
@@ -213,6 +215,7 @@ export default function App() {
           filterFunction={filterFunction}
           tagFilter={tagFilter}
           addLiked={addLiked}
+          setImageURL={setImageURL}
         />
         <Dock ChangeScreen={ChangeScreen} />
       </div>
@@ -224,6 +227,7 @@ export default function App() {
     return (
       <div className="App">
         {" "}
+        <p>{audioUrl}</p>
         <h1> Audio Player </h1>
         <AudioPlayer
           audioUrl={audioUrl}
@@ -232,11 +236,9 @@ export default function App() {
           setAudioLoaded={setAudioLoaded}
           trackID={trackID}
           fileName={fileName}
+          ImageURL={ImageURL}
           addLiked={addLiked}
         />
-        <button onClick={() => addLiked(fileName, trackID, audioUrl)}>
-          Like
-        </button>
         <Dock ChangeScreen={ChangeScreen} />
       </div>
     );
@@ -246,7 +248,16 @@ export default function App() {
     return (
       <div className="App">
         <h1> Liked Audio </h1>
-        <LikedAudioScreen liked={liked} removeLiked={removeLiked} />
+        <LikedAudioScreen
+          liked={liked}
+          removeLiked={removeLiked}
+          setAudioUrl={setAudioUrl}
+          setAudioLoaded={setAudioLoaded}
+          setFileName={setFileName}
+          setImageURL={setImageURL}
+          ChangeScreen={ChangeScreen}
+          setTrackID={setTrackID}
+        />
         <Dock ChangeScreen={ChangeScreen} />
       </div>
     );
@@ -300,10 +311,11 @@ function ResultsComponent(props) {
   // Called from onClick, sets the hooks that need to be set with the correct
   // information for the selected audio file
   // Also changes the screen state to 2 to render the Audio Player Screen
-  const selectAudio = (audioUrl, title, trackID) => {
+  const selectAudio = (audioUrl, title, trackID, ImageURL) => {
     props.setAudioUrl(audioUrl);
     props.setAudioLoaded(false);
     props.setFileName(title);
+    props.setImageURL(ImageURL);
     props.ChangeScreen(2);
   };
 
@@ -330,8 +342,10 @@ function ResultsComponent(props) {
                   <Card className="d-flex flex-column h-100">
                     <Card.Img
                       variant="top"
-                      src="holder.js/100px180"
+                      src={a.ImageURL}
                       margin="auto"
+                      style={{ width: "100%", height: "auto" }}
+                      type="image/png"
                     />
                     <Card.Body>
                       <Card.Title>{a.title}</Card.Title>
@@ -339,7 +353,9 @@ function ResultsComponent(props) {
                       <Button
                         variant="primary"
                         disabled={a.available ? false : true}
-                        onClick={() => selectAudio(a.URL, a.title, a.trackID)}
+                        onClick={() =>
+                          selectAudio(a.URL, a.title, a.trackID, a.ImageURL)
+                        }
                       >
                         {a.available ? "Select" : "Unavailable"}
                       </Button>
@@ -385,8 +401,7 @@ function AudioPlayer(props) {
     return (
       <>
         <p>
-          {" "}
-          Invalid URL for: "<i>{props.fileName}</i>"
+          {props.audioUrl} Invalid URL for: "<i>{props.fileName}</i>"
         </p>
       </>
     );
@@ -396,7 +411,13 @@ function AudioPlayer(props) {
       <>
         <hr />
 
-        <Image src="..." fluid className="rounded mx-auto d-block" />
+        <Image
+          fluid
+          className="rounded mx-auto d-block"
+          style={{ width: "100%", height: "auto" }}
+          src={props.ImageURL}
+          type="image/png"
+        />
 
         <hr />
 
@@ -412,6 +433,21 @@ function AudioPlayer(props) {
         <button onClick={playAudio}>{isPlaying ? "Pause" : "Play"}</button>
         {isPlaying && <p> Playing song </p>}
         {!isPlaying && <p> not playing </p>}
+
+        {props.audioUrl}
+
+        <button
+          onClick={() =>
+            props.addLiked(
+              props.fileName,
+              props.trackID,
+              props.audioUrl,
+              props.ImageURL,
+            )
+          }
+        >
+          Like
+        </button>
       </>
     );
   }
@@ -449,10 +485,11 @@ function Recommended(props) {
   // Called from onClick, sets the hooks that need to be set with the correct
   // information for the selected audio file
   // Also changes the screen state to 2 to render the Audio Player Screen
-  const selectAudio = (audioUrl, title, trackID) => {
+  const selectAudio = (audioUrl, title, trackID, ImageURL) => {
     props.setAudioUrl(audioUrl);
     props.setAudioLoaded(false);
     props.setFileName(title);
+    props.setImageURL(ImageURL);
     props.ChangeScreen(2);
   };
 
@@ -487,8 +524,10 @@ function Recommended(props) {
                     <Card className="d-flex flex-column h-100">
                       <Card.Img
                         variant="top"
-                        src="holder.js/100px180"
+                        src={a.ImageURL}
                         margin="auto"
+                        style={{ width: "100%", height: "auto" }}
+                        type="image/png"
                       />
                       <Card.Body>
                         <Card.Title>{a.title}</Card.Title>
@@ -496,7 +535,9 @@ function Recommended(props) {
                         <Button
                           variant="primary"
                           disabled={a.available ? false : true}
-                          onClick={() => selectAudio(a.URL, a.title, a.trackID)}
+                          onClick={() =>
+                            selectAudio(a.URL, a.title, a.trackID, a.ImageURL)
+                          }
                         >
                           {a.available ? "Select" : "Unavailable"}
                         </Button>
@@ -532,38 +573,49 @@ function Dock(props) {
   );
 }
 
-function LikedAudioScreen({ liked, removeLiked }) {
+function LikedAudioScreen(props) {
+  const selectAudio = (audioUrl, title, trackID, ImageURL) => {
+    props.setAudioUrl(audioUrl);
+    props.setAudioLoaded(false);
+    props.setFileName(title);
+    props.setImageURL(ImageURL);
+    props.ChangeScreen(2);
+  };
+
   return (
     <>
-      {liked.length === 0 ? (
+      {props.liked.length === 0 ? (
         <p>No liked audio files.</p>
       ) : (
         <Container>
           <Row>
-            {Array.isArray(liked) &&
-              liked.map((a, index) => (
+            {Array.isArray(props.liked) &&
+              props.liked.map((a, index) => (
                 // Replace `data` with your actual data source
                 <div key={index} className="col-6 mb-4">
                   <Card className="d-flex flex-column h-100">
                     <Card.Img
                       variant="top"
-                      src="holder.js/100px180"
+                      src={a.ImageURL}
                       margin="auto"
+                      style={{ width: "100%", height: "auto" }}
+                      type="image/png"
                     />
                     <Card.Body>
                       <Card.Title>{a.title}</Card.Title>
                       <Card.Text>{a.trackID}</Card.Text>
                       <Button
                         variant="primary"
-                        disabled={a.available ? false : true}
-                        onClick={() => selectAudio(a.URL, a.title, a.trackID)}
+                        onClick={() =>
+                          selectAudio(a.URL, a.title, a.trackID, a.ImageURL)
+                        }
                       >
-                        {a.available ? "Select" : "Unavailable"}
+                        {"Select"}
                       </Button>
                     </Card.Body>
                     <Button
                       variant="danger"
-                      onClick={() => removeLiked(a.trackID)}
+                      onClick={() => props.removeLiked(a.trackID)}
                     >
                       Unlike
                     </Button>
