@@ -5,6 +5,7 @@
       "trackID": "0001",
       "available": true,
       "URL": null,
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Forest_Day.png",
       "environment": {
         "type": "forest",
         "time": "day",
@@ -20,6 +21,7 @@
       "available": true,
       "length (secs)": 184,
       "URL": null,
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Beach_Day.png",
       "environment": {
         "type": "beach",
         "time": "day",
@@ -35,6 +37,7 @@
       "available": true,
       "length (secs)": 175,
       "URL": null,
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Forest_Day.png",
       "environment": {
         "type": "forest",
         "time": "day",
@@ -50,6 +53,7 @@
       "available": false,
       "length (secs)": 122,
       "URL": null,
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Forest_Night.png",
       "environment": {
         "type": "forest",
         "time": "night",
@@ -65,6 +69,7 @@
       "available": false,
       "length (secs)": 125,
       "URL": null,
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Forest_Night.png",
       "environment": {
         "type": "forest",
         "time": "night",
@@ -80,6 +85,7 @@
       "available": false,
       "length (secs)": 202,
       "URL": null,
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Beach_Night.png",
       "environment": {
         "type": "beach",
         "time": "night",
@@ -95,6 +101,7 @@
       "available": false,
       "length (secs)": 122,
       "URL": null,
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Forest_Night.png",
       "environment": {
         "type": "forest",
         "time": "night",
@@ -110,6 +117,7 @@
       "available": true,
       "length (secs)": 310,
       "URL": null,
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Storm_Night.png",
       "environment": {
         "type": "unknown",
         "time": "night",
@@ -125,6 +133,7 @@
       "available": true,
       "length (secs)": 122,
       "URL": null,
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Snow_Night.png",
       "environment": {
         "type": "forest",
         "time": "night",
@@ -140,6 +149,7 @@
       "available": true,
       "length (secs)": 202,
       "URL": null,
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Jungle_Night.png",
       "environment": {
         "type": "jungle",
         "time": "night",
@@ -155,6 +165,7 @@
       "available": false,
       "length (secs)": 170,
       "URL": null,
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/City_Day.png",
       "environment": {
         "type": "city",
         "time": "day",
@@ -170,6 +181,7 @@
       "available": false,
       "length (secs)": 410,
       "URL": null,
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Beach_Day.png",
       "environment": {
         "type": "beach",
         "time": "day",
@@ -185,6 +197,7 @@
       "available": true,
       "length (secs)": 410,
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/groove.mp3",
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Beach_Day.png",
       "environment": {
         "type": "beach",
         "time": "day",
