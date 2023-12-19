@@ -1,14 +1,16 @@
 import "./styles.css";
 import React, { useState, useRef, useEffect } from "react";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
 import Dropdown from "react-bootstrap/Dropdown";
-import Row from "react-bootstrap/Row";
-import Image from "react-bootstrap/Image";
+
+//External functions, rendering for different screen states
+import Dock from "./Functions/Dock.js";
+import AudioPlayer from "./Functions/AudioPlayer.js";
+import ResultsComponent from "./Functions/ResultsComponent.js";
+import Recommended from "./Functions/Recommended.js";
+import LikedAudioScreen from "./Functions/LikedAudio.js";
 
 export default function App() {
-  // Screen changing code
+  // Screen changing code //
   // 0 => Main Screen
   // 1 => Search Screen
   // 2 => Audio Player Screen
@@ -19,6 +21,7 @@ export default function App() {
     SetScreen(screen);
   };
 
+  // Filtering Code //
   // text input for filename filtering
   const [searchTerm, setSearchTerm] = useState("");
   function onSearchFormChange(event) {
@@ -34,6 +37,7 @@ export default function App() {
     };
   }
 
+  // Tags //
   // Tag variables
   const [typeSelect, setType] = useState("");
   const [timeSelect, setTime] = useState("");
@@ -67,6 +71,7 @@ export default function App() {
     };
   }
 
+  // Audio State Code //
   // Audio Loading and Playing Code
   const [audioUrl, setAudioUrl] = useState(null); // The URL from the JSON file for the selected audio file
   const [ImageURL, setImageURL] = useState(null);
@@ -75,10 +80,28 @@ export default function App() {
   const [trackID, setTrackID] = useState(""); // track ID of selected audio file
   const audioRef = useRef(null); // Reference to selected audio element
 
+  // Audio Liking Code //
+  // variables for liking audio files
+  const [liked, setLiked] = useState([]);
+
+  // add audio to liked array
+  function addLiked(trackID) {
+    // spread operator
+    //setLiked([...liked, { title, trackID, audioUrl, ImageURL }]);
+    setLiked([...liked, trackID]);
+  }
+
+  function removeLiked(trackID) {
+    const updatedLiked = liked.filter((id) => id !== trackID);
+    setLiked(updatedLiked);
+  }
+
+  // Time Of Day Code//
   // Time of day based on current hour
   let timeOfDay;
   const date = new Date();
   const hours = date.getHours();
+
   if (hours >= 4 && hours < 12) {
     timeOfDay = "Morning";
   } else if (hours >= 12 && hours < 18) {
@@ -87,27 +110,7 @@ export default function App() {
     timeOfDay = "Night";
   }
 
-  // variables for liking audio files
-  const [liked, setLiked] = useState([]);
-
-  // add audio to liked array
-  function addLiked(title, trackID, audioUrl, ImageURL) {
-    // spread operator
-    setLiked([...liked, { title, trackID, audioUrl, ImageURL }]);
-  }
-
-  // find trackID of audio
-  function findAudioIndex(needle) {
-    return function (haystack) {
-      return haystack.trackID === needle.trackID;
-    };
-  }
-
-  function removeLiked(trackID) {
-    const updatedLiked = liked.filter((audio) => audio.trackID !== trackID);
-    setLiked(updatedLiked);
-  }
-
+  // Screen Rendering //
   // Home Screen
   if (ScreenState === 0) {
     // Code For Home Screen
@@ -128,6 +131,7 @@ export default function App() {
           filterFunction={filterFunction}
           tagFilter={tagFilter}
           setImageURL={setImageURL}
+          setTrackID={setTrackID}
         />
         <Dock ChangeScreen={ChangeScreen} />
       </div>
@@ -227,7 +231,6 @@ export default function App() {
     return (
       <div className="App">
         {" "}
-        <p>{audioUrl}</p>
         <h1> Audio Player </h1>
         <AudioPlayer
           audioUrl={audioUrl}
@@ -262,369 +265,4 @@ export default function App() {
       </div>
     );
   }
-}
-
-// Function to Display audio files in JSON file
-// Rendered from screen 1
-function ResultsComponent(props) {
-  //Code for Loading JSON from github, including checks and error handling
-
-  //maybe data has to be switched w filteredData
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  // text search filter
-  const filteredData = data.filter(
-    props.filterFunction(props.searchTermFromParent),
-  );
-
-  //tag filtration, re-add props for other variables once working
-  const tagData = filteredData.filter(
-    props.tagFilter(
-      props.typeFromParent,
-      props.timeFromParent,
-      props.weatherFromParent,
-      props.locationFromParent,
-    ),
-  );
-
-  useEffect(() => {
-    const jsonURL =
-      "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/src/jsonFiles/soundFiles.json";
-
-    async function fetchData() {
-      try {
-        const response = await fetch(jsonURL);
-        const json = await response.json();
-        setData(json.soundFiles);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchData();
-  }, []);
-
-  // Called from onClick, sets the hooks that need to be set with the correct
-  // information for the selected audio file
-  // Also changes the screen state to 2 to render the Audio Player Screen
-  const selectAudio = (audioUrl, title, trackID, ImageURL) => {
-    props.setAudioUrl(audioUrl);
-    props.setAudioLoaded(false);
-    props.setFileName(title);
-    props.setImageURL(ImageURL);
-    props.ChangeScreen(2);
-  };
-
-  //Conditional rendering of json file, including buttons to select different audio URLs (need to be included in JSON)
-  //to play from
-  if (error) {
-    return <h1>Oops! An error has occurred: {error.toString()}</h1>;
-  } else if (loading) {
-    return <h1>Loading Data... Please wait!</h1>;
-  } else {
-    // Print all files in JSON with their titles, location and a button
-    // button can be used to select that audio file, selecting a file
-    // passes the URL of that file (contained within the JSON file) to the
-    // parent "App" function. From there all necessary information (title, URL and other necessary hooks)
-    // is passed to the AudioPlayer function which handles loading of files and playback
-
-    return (
-      <>
-        <Container>
-          <Row>
-            {Array.isArray(tagData) &&
-              tagData.map((a, index) => (
-                <div key={index} className="col-6 mb-4">
-                  <Card className="d-flex flex-column h-100">
-                    <Card.Img
-                      variant="top"
-                      src={a.ImageURL}
-                      margin="auto"
-                      style={{ width: "100%", height: "auto" }}
-                      type="image/png"
-                    />
-                    <Card.Body>
-                      <Card.Title>{a.title}</Card.Title>
-                      <Card.Text>{a.environment.location}</Card.Text>
-                      <Button
-                        variant="primary"
-                        disabled={a.available ? false : true}
-                        onClick={() =>
-                          selectAudio(a.URL, a.title, a.trackID, a.ImageURL)
-                        }
-                      >
-                        {a.available ? "Select" : "Unavailable"}
-                      </Button>
-                    </Card.Body>
-                  </Card>
-                </div>
-              ))}
-          </Row>
-        </Container>
-      </>
-    );
-  }
-}
-
-// Function to handle displaying audio player and audio playback
-// Rendered from screen 2
-function AudioPlayer(props) {
-  //Audio Playback state
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  //handles button press to pause and play audio
-  const playAudio = () => {
-    if (props.audioRef.current) {
-      if (isPlaying) {
-        props.audioRef.current.pause();
-      } else {
-        props.audioRef.current.play();
-      }
-
-      setIsPlaying(!isPlaying);
-    }
-  };
-
-  //checking if audio has loaded from URL
-  const checkAudioLoad = () => {
-    props.setAudioLoaded(true);
-  };
-
-  //Audio Player Component Display
-  //Chacks to make sure the URL field is not empty
-  if (props.audioUrl == null) {
-    //If null in json, render invalid URL
-    return (
-      <>
-        <p>
-          {props.audioUrl} Invalid URL for: "<i>{props.fileName}</i>"
-        </p>
-      </>
-    );
-  } else {
-    //If URL field is not null, attemp to load the audio and display any playback components
-    return (
-      <>
-        <hr />
-
-        <Image
-          fluid
-          className="rounded mx-auto d-block"
-          style={{ width: "100%", height: "auto" }}
-          src={props.ImageURL}
-          type="image/png"
-        />
-
-        <hr />
-
-        <audio ref={props.audioRef} onLoadedData={checkAudioLoad} controls>
-          <source src={props.audioUrl} type="audio/mp3" />
-        </audio>
-        {props.audioLoaded ? (
-          <p>Audio has been loaded!</p>
-        ) : (
-          <p>Loading audio... Please wait.</p>
-        )}
-        <p> {props.fileName} </p>
-        <button onClick={playAudio}>{isPlaying ? "Pause" : "Play"}</button>
-        {isPlaying && <p> Playing song </p>}
-        {!isPlaying && <p> not playing </p>}
-
-        {props.audioUrl}
-
-        <button
-          onClick={() =>
-            props.addLiked(
-              props.fileName,
-              props.trackID,
-              props.audioUrl,
-              props.ImageURL,
-            )
-          }
-        >
-          Like
-        </button>
-      </>
-    );
-  }
-}
-
-// Exact same code as ResultsComponent, however here we take in the time of day and use that as
-// the only filter for sounds
-function Recommended(props) {
-  //Code for Loading JSON from github, including checks and error handling
-
-  //maybe data has to be switched w filteredData
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const jsonURL =
-      "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/src/jsonFiles/soundFiles.json";
-
-    async function fetchData() {
-      try {
-        const response = await fetch(jsonURL);
-        const json = await response.json();
-        setData(json.soundFiles);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchData();
-  }, []);
-
-  // Called from onClick, sets the hooks that need to be set with the correct
-  // information for the selected audio file
-  // Also changes the screen state to 2 to render the Audio Player Screen
-  const selectAudio = (audioUrl, title, trackID, ImageURL) => {
-    props.setAudioUrl(audioUrl);
-    props.setAudioLoaded(false);
-    props.setFileName(title);
-    props.setImageURL(ImageURL);
-    props.ChangeScreen(2);
-  };
-
-  //Conditional rendering of json file, including buttons to select different audio URLs (need to be included in JSON)
-  //to play from
-  if (error) {
-    return <h1>Oops! An error has occurred: {error.toString()}</h1>;
-  } else if (loading) {
-    return <h1>Loading Data... Please wait!</h1>;
-  } else {
-    // Variable to hold string value of current time of day
-    let TOD;
-    if (props.timeOfDay_FromParent === "Morning" || "Afternoon") {
-      TOD = "day";
-    } else {
-      TOD = "night";
-    }
-
-    // Conditional rendering using filter function that checks if the current
-    // TOD matches the "timestamp" for each track in the JSON file
-    // Slices the result to only show 4 recommended tracks
-    return (
-      <>
-        <Container>
-          <Row>
-            {Array.isArray(data) &&
-              data
-                .filter((a) => a.environment.time === TOD)
-                .slice(0, 4)
-                .map((a, index) => (
-                  <div key={index} className="col-6 mb-4">
-                    <Card className="d-flex flex-column h-100">
-                      <Card.Img
-                        variant="top"
-                        src={a.ImageURL}
-                        margin="auto"
-                        style={{ width: "100%", height: "auto" }}
-                        type="image/png"
-                      />
-                      <Card.Body>
-                        <Card.Title>{a.title}</Card.Title>
-                        <Card.Text>{a.environment.location}</Card.Text>
-                        <Button
-                          variant="primary"
-                          disabled={a.available ? false : true}
-                          onClick={() =>
-                            selectAudio(a.URL, a.title, a.trackID, a.ImageURL)
-                          }
-                        >
-                          {a.available ? "Select" : "Unavailable"}
-                        </Button>
-                      </Card.Body>
-                    </Card>
-                  </div>
-                ))}
-          </Row>
-        </Container>
-      </>
-    );
-  }
-}
-
-function Dock(props) {
-  return (
-    <>
-      <hr />{" "}
-      <Button variant="success" onClick={() => props.ChangeScreen(0)}>
-        {" "}
-        Home{" "}
-      </Button>{" "}
-      <Button variant="info" onClick={() => props.ChangeScreen(1)}>
-        {" "}
-        Search{" "}
-      </Button>{" "}
-      <Button variant="warning" onClick={() => props.ChangeScreen(3)}>
-        {" "}
-        Likes{" "}
-      </Button>{" "}
-      <hr />
-    </>
-  );
-}
-
-function LikedAudioScreen(props) {
-  const selectAudio = (audioUrl, title, trackID, ImageURL) => {
-    props.setAudioUrl(audioUrl);
-    props.setAudioLoaded(false);
-    props.setFileName(title);
-    props.setImageURL(ImageURL);
-    props.ChangeScreen(2);
-  };
-
-  return (
-    <>
-      {props.liked.length === 0 ? (
-        <p>No liked audio files.</p>
-      ) : (
-        <Container>
-          <Row>
-            {Array.isArray(props.liked) &&
-              props.liked.map((a, index) => (
-                // Replace `data` with your actual data source
-                <div key={index} className="col-6 mb-4">
-                  <Card className="d-flex flex-column h-100">
-                    <Card.Img
-                      variant="top"
-                      src={a.ImageURL}
-                      margin="auto"
-                      style={{ width: "100%", height: "auto" }}
-                      type="image/png"
-                    />
-                    <Card.Body>
-                      <Card.Title>{a.title}</Card.Title>
-                      <Card.Text>{a.trackID}</Card.Text>
-                      <Button
-                        variant="primary"
-                        onClick={() =>
-                          selectAudio(a.URL, a.title, a.trackID, a.ImageURL)
-                        }
-                      >
-                        {"Select"}
-                      </Button>
-                    </Card.Body>
-                    <Button
-                      variant="danger"
-                      onClick={() => props.removeLiked(a.trackID)}
-                    >
-                      Unlike
-                    </Button>
-                  </Card>
-                </div>
-              ))}
-          </Row>
-        </Container>
-      )}
-    </>
-  );
 }
