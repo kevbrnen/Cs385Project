@@ -74,7 +74,12 @@ const Recommended = (props) => {
           <Row>
             {Array.isArray(data) &&
               data
-                .filter((a) => a.environment && a.environment.time === TOD)
+                .filter(
+                  (a) =>
+                    a.environment &&
+                    a.environment.time === TOD &&
+                    a.available === true,
+                )
                 .slice(0, 4)
                 .map((a, index) => (
                   <div key={index} className="col-6 mb-4">
