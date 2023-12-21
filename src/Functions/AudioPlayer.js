@@ -59,18 +59,11 @@ const AudioPlayer = (props) => {
           <p>Loading audio... Please wait.</p>
         )}
         <p> {props.fileName} </p>
+        <p> {props.info} </p>
         <Button onClick={playAudio}>{isPlaying ? "Pause" : "Play"}</Button>{" "}
         {isPlaying && <p> Playing song </p>}
         {!isPlaying && <p> not playing </p>}{" "}
-        <Button
-          onClick={() =>
-            props.addLiked(
-              props.trackID,
-            )
-          }
-        >
-          Like
-        </Button>
+        <Button onClick={() => props.addLiked(props.trackID)}>Like</Button>
       </>
     );
   }

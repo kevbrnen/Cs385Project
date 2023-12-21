@@ -75,6 +75,7 @@ export default function App() {
   // Audio Loading and Playing Code
   const [audioUrl, setAudioUrl] = useState(null); // The URL from the JSON file for the selected audio file
   const [ImageURL, setImageURL] = useState(null);
+  const [info, setInfo] = useState("");
   const [audioLoaded, setAudioLoaded] = useState(false); // Keeps track of whether audio has been loaded from URL
   const [fileName, setFileName] = useState(""); // The file name of the selected audio file
   const [trackID, setTrackID] = useState(""); // track ID of selected audio file
@@ -116,9 +117,15 @@ export default function App() {
     // Code For Home Screen
     // Calls recommended function which shows 4 Tracks
     // Filtered by the current time of day (Day/night)
+
+    //picture of tree
+    const pictureOfTree =
+      "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/pictureoftree.PNG";
+
     return (
       <div className="App">
         {" "}
+        <img src={pictureOfTree} alt="GitHub Image" />
         <h1> Main Screen </h1>
         <hr />
         <h1> Recommended {timeOfDay} Tracks</h1>
@@ -240,6 +247,7 @@ export default function App() {
           audioLoaded={audioLoaded}
           setAudioLoaded={setAudioLoaded}
           trackID={trackID}
+          info={info}
           fileName={fileName}
           ImageURL={ImageURL}
           addLiked={addLiked}

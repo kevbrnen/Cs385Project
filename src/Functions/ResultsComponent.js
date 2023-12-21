@@ -53,8 +53,9 @@ const ResultsComponent = (props) => {
   // Called from onClick, sets the hooks that need to be set with the correct
   // information for the selected audio file
   // Also changes the screen state to 2 to render the Audio Player Screen
-  const selectAudio = (audioUrl, title, trackID, ImageURL) => {
+  const selectAudio = (audioUrl, title, trackID, ImageURL, info) => {
     props.setAudioUrl(audioUrl);
+    props.setInfo(info);
     props.setAudioLoaded(false);
     props.setFileName(title);
     props.setImageURL(ImageURL);
@@ -101,7 +102,7 @@ const ResultsComponent = (props) => {
                         variant="primary"
                         disabled={a.available ? false : true}
                         onClick={() =>
-                          selectAudio(a.URL, a.title, a.trackID, a.ImageURL)
+                          selectAudio(a.URL, a.title, a.trackID, a.ImageURL, a.info)
                         }
                       >
                         {a.available ? "Select" : "Unavailable"}
