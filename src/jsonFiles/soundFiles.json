@@ -291,7 +291,7 @@
       "trackID": "023",
       "available": false,
       "URL": null,
-      "ImageURL": null,
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/City_Day.png",
       "environment": {
         "type": "city",
         "time": "day",
@@ -304,7 +304,7 @@
       "trackID": "024",
       "available": false,
       "URL": null,
-      "ImageURL": null,
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/City_Day.png",
       "environment": {
         "type": "city",
         "time": "day",
@@ -317,7 +317,7 @@
       "trackID": "025",
       "available": false,
       "URL": null,
-      "ImageURL": null,
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/City_Day.png",
       "environment": {
         "type": "city",
         "time": "day",
@@ -330,7 +330,7 @@
       "trackID": "026",
       "available": false,
       "URL": null,
-      "ImageURL": null,
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Beach_Night.png",
       "environment": {
         "type": "beach",
         "time": "night",
@@ -343,7 +343,7 @@
       "trackID": "027",
       "available": true,
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/Jungle%20Ambience%20Day%202.mp3",
-      "ImageURL": null,
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Jungle_Night.png",
       "environment": {
         "type": "jungle",
         "time": "night",
@@ -356,7 +356,7 @@
       "trackID": "028",
       "available": true,
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/Plains%20Ambience%20Day.mp3",
-      "ImageURL": null,
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Plains_Day.png",
       "environment": {
         "type": "plains",
         "time": "day",
@@ -369,7 +369,7 @@
       "trackID": "029",
       "available": false,
       "URL": null,
-      "ImageURL": null,
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Snow_Night.png",
       "environment": {
         "type": "snow",
         "time": "night",
@@ -382,7 +382,7 @@
       "trackID": "030",
       "available": true,
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/City%20Ambience%20Day.mp3",
-      "ImageURL": null,
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/City_Day.png",
       "environment": {
         "type": "city",
         "time": "day",
@@ -393,9 +393,9 @@
     {
       "title": "Forest Ambience 6",
       "trackID": "031",
-      "available": false,
-      "URL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Forest_Day.png",
-      "ImageURL": null,
+      "available": true,
+      "URL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/AudioFiles/Forest%Ambience%Day",
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Forest_Day.png",
       "environment": {
         "type": "forest",
         "time": "day",
