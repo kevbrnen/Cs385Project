@@ -202,6 +202,8 @@ export default function App() {
             <Dropdown.Item eventKey="Finland">Finland</Dropdown.Item>
             <Dropdown.Item eventKey="Brazil">Brazil</Dropdown.Item>
             <Dropdown.Item eventKey="Spain">Spain</Dropdown.Item>
+            <Dropdown.Item eventKey="India">India</Dropdown.Item>
+            <Dropdown.Item eventKey="France">France</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         <hr />

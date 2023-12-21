@@ -4,6 +4,7 @@
       "title": "Forest Ambience 1",
       "trackID": "001",
       "available": true,
+      "info": "A serene day in the lush forests of England, with clear skies and soothing sounds of nature.",
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/Forest%20Ambience%20Day.mp3",
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Forest_Day.png",
       "environment": {
@@ -17,6 +18,7 @@
       "title": "Beach Ambience 1",
       "trackID": "002",
       "available": true,
+      "info": "A calm relaxing recording of the beaches in France.",
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/Beach%20Ambience%20Day.mp3",
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Beach_Day.png",
       "environment": {
@@ -30,6 +32,7 @@
       "title": "Forest Ambience 2",
       "trackID": "003",
       "available": true,
+      "info": "A rainy day in a forest in Ireland.",
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/Thunderstorm%20Ambience.mp3",
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Forest_Day.png",
       "environment": {
@@ -43,6 +46,7 @@
       "title": "Forest Ambience 3",
       "trackID": "004",
       "available": false,
+      "info": "A calm night in a forest in Ireland.",
       "URL": null,
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Forest_Night.png",
       "environment": {
@@ -56,6 +60,7 @@
       "title": "Forest Ambience 4",
       "trackID": "005",
       "available": true,
+      "info": "A serene night in a lush forest in America, with clear skies and soothing sounds of nature.",
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/Forest%20Ambience%20Night.mp3",
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Forest_Night.png",
       "environment": {
@@ -69,6 +74,7 @@
       "title": "Beach Ambience 2",
       "trackID": "006",
       "available": true,
+      "info": "A windy night at a beach in England.",
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/Beach%20Ambience%20Night.mp3",
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Beach_Night.png",
       "environment": {
@@ -82,6 +88,7 @@
       "title": "Forest Ambience 5",
       "trackID": "007",
       "available": false,
+      "info": "A stormy night in a dense forest in Ireland.",
       "URL": null,
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Forest_Night.png",
       "environment": {
@@ -95,6 +102,7 @@
       "title": "Thunderstorm Ambience 1",
       "trackID": "008",
       "available": true,
+      "info": "Captured audio of a thunderstorm in America.",
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/Thunderstorm%20Ambience.mp3",
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Storm_Night.png",
       "environment": {
@@ -108,6 +116,7 @@
       "title": "Snow Ambience 1",
       "trackID": "009",
       "available": true,
+      "info": "A serene night in the lush forests of Finland, with cloudy skies and soothing sounds of snow.",
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/Snow%20Ambience%20Night.mp3",
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Snow_Night.png",
       "environment": {
@@ -121,6 +130,7 @@
       "title": "Jungle Ambience 1",
       "trackID": "010",
       "available": true,
+      "info": "A wild night in a jungle in Brazil.",
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/Jungle%20Ambience%20Night.mp3",
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Jungle_Night.png",
       "environment": {
@@ -134,6 +144,7 @@
       "title": "City Ambience 1",
       "trackID": "011",
       "available": false,
+      "info": "A busy day in a city in England.",
       "URL": null,
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/City_Day.png",
       "environment": {
@@ -147,6 +158,7 @@
       "title": "Beach Ambience 3",
       "trackID": "012",
       "available": false,
+      "info": "A serene day on a beach in Spain, with clear skies and soothing sounds of waves.",
       "URL": null,
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Beach_Day.png",
       "environment": {
@@ -160,6 +172,7 @@
       "title": "City Ambience 2",
       "trackID": "013",
       "available": true,
+      "info": "A noisy day in a city in America.",
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/groove.mp3",
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/City_Day.png",
       "environment": {
@@ -173,6 +186,7 @@
       "title": "Plains Ambience 1",
       "trackID": "014",
       "available": true,
+      "info": "A calm night on open plains in America.",
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/Plains%20Ambience%20Night.mp3",
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Plains_Night.png",
       "environment": {
@@ -186,6 +200,7 @@
       "title": "Beach Ambience 4",
       "trackID": "015",
       "available": true,
+      "info": "A tranquil day on a beach in Brazil.",
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/groove.mp3",
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Beach_Day.png",
       "environment": {
@@ -199,6 +214,7 @@
       "title": "Jungle Ambience 2",
       "trackID": "016",
       "available": true,
+      "info": "Audio from a jungle in India.",
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/Jungle%20Ambience%20Day.mp3",
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Jungle_Day.png",
       "environment": {
@@ -212,8 +228,9 @@
       "title": "City Ambience 3",
       "trackID": "017",
       "available": true,
+      "info": "Audio from a busy day in a city in India.",
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/City%20Ambience%20Day%202.mp3",
-      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Beach_Day.png",
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/City_Day.png",
       "environment": {
         "type": "city",
         "time": "day",
@@ -225,6 +242,7 @@
       "title": "Snow Ambience 2",
       "trackID": "018",
       "available": true,
+      "info": "Calming audio from snowfall over plains in America.",
       "URL": null,
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Snow_Night.png",
       "environment": {
@@ -238,6 +256,7 @@
       "title": "Snow Ambience 3",
       "trackID": "019",
       "available": true,
+      "info": "A serene day in the lush forests of England, with cloudy skies and soothing snowfall.",
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/Snow%20Ambience%20Day.mp3",
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Snow_Day.png",
       "environment": {
@@ -251,6 +270,7 @@
       "title": "Snow Ambience 4",
       "trackID": "020",
       "available": false,
+      "info": "A snowy day in Finland.",
       "URL": null,
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Snow_Night.png",
       "environment": {
@@ -264,6 +284,7 @@
       "title": "City Ambience 4",
       "trackID": "021",
       "available": true,
+      "info": "A busy day in a city in Brazil.",
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/City%20Ambience%20Day.mp3",
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/City_Day.png",
       "environment": {
@@ -277,6 +298,7 @@
       "title": "Jungle Ambience 3",
       "trackID": "022",
       "available": false,
+      "info": "Heavy rainfall in a jungle in Brazil.",
       "URL": null,
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Jungle_Night.png",
       "environment": {
@@ -290,11 +312,12 @@
       "title": "City Ambience 5",
       "trackID": "023",
       "available": false,
+      "info": "A busy day in a city in England.",
       "URL": null,
-      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/City_Day.png",
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/City_Night.png",
       "environment": {
         "type": "city",
-        "time": "day",
+        "time": "night",
         "weather": "clear",
         "location": "England"
       }
@@ -303,11 +326,12 @@
       "title": "City Ambience 6",
       "trackID": "024",
       "available": false,
+      "info": "A busy day in a city in France.",
       "URL": null,
-      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/City_Day.png",
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/City_Night.png",
       "environment": {
         "type": "city",
-        "time": "day",
+        "time": "night",
         "weather": "clear",
         "location": "France"
       }
@@ -316,6 +340,7 @@
       "title": "City Ambience 7",
       "trackID": "025",
       "available": false,
+      "info": "A bustling city in England with heavy traffic and roadworks.",
       "URL": null,
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/City_Day.png",
       "environment": {
@@ -329,6 +354,7 @@
       "title": "Beach Ambience 5",
       "trackID": "026",
       "available": false,
+      "info": "A stormy night by a beach in Spain.",
       "URL": null,
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Beach_Night.png",
       "environment": {
@@ -342,6 +368,7 @@
       "title": "Jungle Ambience 4",
       "trackID": "027",
       "available": true,
+      "info": "A soothing night captured from a jungle in India.",
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/Jungle%20Ambience%20Day%202.mp3",
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Jungle_Night.png",
       "environment": {
@@ -355,6 +382,7 @@
       "title": "Plains Ambience 2",
       "trackID": "028",
       "available": true,
+      "info": "A serene day from plains in America.",
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/Plains%20Ambience%20Day.mp3",
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Plains_Day.png",
       "environment": {
@@ -368,10 +396,11 @@
       "title": "Snow Ambience 5",
       "trackID": "029",
       "available": false,
+      "info": "A snowy night from the forests of Finland.",
       "URL": null,
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Snow_Night.png",
       "environment": {
-        "type": "snow",
+        "type": "forest",
         "time": "night",
         "weather": "snowing",
         "location": "Finland"
@@ -381,6 +410,7 @@
       "title": "City Ambience 8",
       "trackID": "030",
       "available": true,
+      "info": "A busy day from a city in England with heavy traffic.",
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/City%20Ambience%20Day.mp3",
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/City_Day.png",
       "environment": {
@@ -394,6 +424,7 @@
       "title": "Forest Ambience 6",
       "trackID": "031",
       "available": true,
+      "info": "A serene day in the lush forests of France.",
       "URL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/AudioFiles/Forest%Ambience%Day",
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Forest_Day.png",
       "environment": {
@@ -407,6 +438,7 @@
       "title": "Beach Ambience 6",
       "trackID": "032",
       "available": false,
+      "info": "A breezy night from a beach in Spain.",
       "URL": null,
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Beach_Night.png",
       "environment": {
@@ -420,6 +452,7 @@
       "title": "Jungle Ambience 4",
       "trackID": "033",
       "available": false,
+      "info": "A noisy night from a jungle in India.",
       "URL": null,
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Jungle_Night.png",
       "environment": {
@@ -433,6 +466,7 @@
       "title": "Plains Ambience 3",
       "trackID": "034",
       "available": false,
+      "info": "A rainy day recorded on the American plains",
       "URL": null,
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Plains_Day.png",
       "environment": {
@@ -446,10 +480,11 @@
       "title": "Snow Ambience 6",
       "trackID": "035",
       "available": false,
+      "info": "Calming audio of snowfall in Finland.",
       "URL": null,
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Snow_Night.png",
       "environment": {
-        "type": "snow",
+        "type": "unknown",
         "time": "night",
         "weather": "snowing",
         "location": "Finland"
@@ -459,6 +494,7 @@
       "title": "City Ambience 9",
       "trackID": "036",
       "available": false,
+      "info": "Audio from a busy day in the city in France.",
       "URL": null,
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/City_Day.png",
       "environment": {
@@ -472,6 +508,7 @@
       "title": "Forest Ambience 7",
       "trackID": "037",
       "available": true,
+      "info": "A serene day in the lush forests of England, with clear skies and soothing sounds of nature.",
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/Forest%20Ambience%20Day.mp3",
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Forest_Day.png",
       "environment": {
@@ -485,12 +522,13 @@
       "title": "Beach Ambience 7",
       "trackID": "038",
       "available": false,
+      "info": "A tranquil night on a beach in Spain.",
       "URL": null,
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Beach_Night.png",
       "environment": {
         "type": "beach",
         "time": "night",
-        "weather": "windy",
+        "weather": "clear",
         "location": "Spain"
       }
     },
@@ -498,6 +536,7 @@
       "title": "Jungle Ambience 5",
       "trackID": "039",
       "available": true,
+      "info": "A soothing night captured from a jungle in India.",
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/Jungle%20Ambience%20Night.mp3",
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Jungle_Night.png",
       "environment": {
@@ -511,19 +550,21 @@
       "title": "Plains Ambience 4",
       "trackID": "040",
       "available": false,
+      "info": "Rainy day over fields in France.",
       "URL": null,
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Plains_Day.png",
       "environment": {
         "type": "plains",
         "time": "day",
         "weather": "raining",
-        "location": "America"
+        "location": "France"
       }
     },
     {
       "title": "Snow Ambience 7",
       "trackID": "041",
       "available": true,
+      "info": "A snowy day in Finland.",
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/City%20Ambience%20Night.mp3",
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Snow_Night.png",
       "environment": {
@@ -537,6 +578,7 @@
       "title": "City Ambience 10",
       "trackID": "042",
       "available": false,
+      "info": "A busy day in a city in France with heavy traffic and roadworks.",
       "URL": null,
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/City_Day.png",
       "environment": {
@@ -550,6 +592,7 @@
       "title": "Forest Ambience 8",
       "trackID": "043",
       "available": true,
+      "info": "A serene day in the lush forests of Finland, with clear skies and soothing sounds of nature.",
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/Forest%20Ambience%20Day.mp3",
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Forest_Day.png",
       "environment": {
@@ -563,11 +606,12 @@
       "title": "Beach Ambience 8",
       "trackID": "044",
       "available": true,
-      "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/Beach%20Ambience%20Night.mp3",
-      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Beach_Night.png",
+      "info": "A calming day on a beach in Spain.",
+      "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/Beach%20Ambience%20Day.mp3",
+      "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Beach_Day.png",
       "environment": {
         "type": "beach",
-        "time": "night",
+        "time": "day",
         "weather": "windy",
         "location": "Spain"
       }
@@ -576,6 +620,7 @@
       "title": "Jungle Ambience 6",
       "trackID": "045",
       "available": false,
+      "info": "Jungle mode activated.",
       "URL": null,
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Jungle_Night.png",
       "environment": {
@@ -589,32 +634,35 @@
       "title": "Plains Ambience 5",
       "trackID": "046",
       "available": true,
+      "info": "Recording of rain over fields in Ireland.",
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/Thunderstorm%20Ambience.mp3",
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Plains_Day.png",
       "environment": {
         "type": "plains",
         "time": "day",
         "weather": "raining",
-        "location": "America"
+        "location": "Ireland"
       }
     },
     {
       "title": "Snow Ambience 8",
       "trackID": "047",
       "available": false,
+      "info": "Calming snowfall recorded in France.",
       "URL": null,
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Snow_Night.png",
       "environment": {
         "type": "snow",
         "time": "night",
         "weather": "snowing",
-        "location": "Finland"
+        "location": "France"
       }
     },
     {
       "title": "City Ambience 11",
       "trackID": "048",
       "available": false,
+      "info": "A busy day in a city in Brazil.",
       "URL": null,
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/City_Day.png",
       "environment": {
@@ -628,6 +676,7 @@
       "title": "Forest Ambience 9",
       "trackID": "049",
       "available": false,
+      "info": "A serene day in the lush forests of England, with clear skies and soothing sounds of nature.",
       "URL": null,
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Forest_Day.png",
       "environment": {
@@ -641,13 +690,14 @@
       "title": "Beach Ambience 9",
       "trackID": "050",
       "available": true,
+      "info": "A stormy night on a beach in Finland.",
       "URL": "https://github.com/kevbrnen/Cs385Project/raw/main/AudioFiles/Beach%20Ambience%20Night.mp3",
       "ImageURL": "https://raw.githubusercontent.com/kevbrnen/Cs385Project/main/Images/Beach_Night.png",
       "environment": {
         "type": "beach",
         "time": "night",
-        "weather": "windy",
-        "location": "Spain"
+        "weather": "raining",
+        "location": "Finland"
       }
     }
   ]
