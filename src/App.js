@@ -126,6 +126,8 @@ export default function App() {
       <div className="App">
         {" "}
         <img src={pictureOfTree} alt="GitHub Image" />
+        <h1> Environmental Audio Player </h1>
+        <hr />
         <h1> Main Screen </h1>
         <hr />
         <h1> Recommended {timeOfDay} Tracks</h1>
@@ -223,6 +225,7 @@ export default function App() {
           setAudioUrl={setAudioUrl}
           setAudioLoaded={setAudioLoaded}
           setTrackID={setTrackID}
+          setInfo={setInfo}
           setFileName={setFileName}
           ChangeScreen={ChangeScreen}
           filterFunction={filterFunction}

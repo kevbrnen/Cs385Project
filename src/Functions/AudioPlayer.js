@@ -58,8 +58,12 @@ const AudioPlayer = (props) => {
         ) : (
           <p>Loading audio... Please wait.</p>
         )}
-        <p> {props.fileName} </p>
-        <p> {props.info} </p>
+        <p>
+          {" "}
+          <span style={{ fontWeight: "bold" }}>{props.fileName}</span>{" "}
+        </p>
+        <h6>Environmental Information:</h6>
+        <p>{props.info} </p>
         <Button onClick={playAudio}>{isPlaying ? "Pause" : "Play"}</Button>{" "}
         {isPlaying && <p> Playing song </p>}
         {!isPlaying && <p> not playing </p>}{" "}

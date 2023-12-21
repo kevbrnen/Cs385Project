@@ -55,11 +55,11 @@ const ResultsComponent = (props) => {
   // Also changes the screen state to 2 to render the Audio Player Screen
   const selectAudio = (audioUrl, title, trackID, ImageURL, info) => {
     props.setAudioUrl(audioUrl);
-    props.setInfo(info);
     props.setAudioLoaded(false);
     props.setFileName(title);
-    props.setImageURL(ImageURL);
     props.setTrackID(trackID);
+    props.setImageURL(ImageURL);
+    props.setInfo(info);
     props.ChangeScreen(2);
   };
 
