@@ -38,7 +38,7 @@ const AudioPlayer = (props) => {
       </>
     );
   } else {
-    //If URL field is not null, attemp to load the audio and display any playback components
+    //If URL field is not null, attempt to load the audio and display any playback components
     return (
       <>
         <hr />

@@ -1,6 +1,8 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 
+// Home, Search and Liked Screen buttons displayed at the bottom of every page
+// For Quick access
 const Dock = (props) => {
   return (
     <>

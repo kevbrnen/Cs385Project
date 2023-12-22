@@ -11,7 +11,6 @@ import Image from "react-bootstrap/Image";
 const ResultsComponent = (props) => {
   //Code for Loading JSON from github, including checks and error handling
 
-  //maybe data has to be switched w filteredData
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

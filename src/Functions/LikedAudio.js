@@ -40,6 +40,9 @@ const LikedAudioScreen = (props) => {
     props.ChangeScreen(2);
   };
 
+  // Check for loading errors
+  // If no errors, check if json object (using trackID) is located in
+  // The global liked array
   if (error) {
     return <h1>Oops! An error has occurred: {error.toString()}</h1>;
   } else if (loading) {
