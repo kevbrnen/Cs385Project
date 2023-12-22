@@ -1,8 +1,5 @@
 # Cs385Project
 
-Hi Hugo
-
-
 An immersive environmental sound app to promote sustainability and raise awareness for the environment.
 
 * UI
